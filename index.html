@@ -15,7 +15,39 @@
 
     <main>
         <!--Escena 1-->
-        
+        <div id="player" class="scene active">
+            <h2>Crear Jugador</h2>
+            <div id="scene1-container">
+                <div class="img-container">
+                    <img src="./image/player.png" alt="jugador">
+                </div>
+
+            </div>
+
+            <input id="nombre-jugador" placeholder="Introduce el nombre" type="text" maxlength="20">
+
+            <div class="formulario-crear-jugador">
+                
+                <label>Ataque (Base: <span id="ataque-val">0</span>):
+                    <input type="number" id="ataque-input" min="0" max="10" value="0">
+                </label>
+
+                <label>Defensa (Base: <span id="defensa-val">0</span>):
+                    <input type="number" id="defensa-input" min="0" max="10" value="0">
+                </label>
+
+                <label>Vida (<span id="vida-val">100</span>):
+                    <input type="number" id="vida-input" min="0" max="10" value="0">               
+                </label>
+
+                <p id="puntos-gastados">Puntos diponibles para repartir: 10</p>
+
+                
+            </div>
+
+            <button id="crear-jugador" class="boton-crear">Crear Jugador</button>
+        </div>
+
 
 
 
