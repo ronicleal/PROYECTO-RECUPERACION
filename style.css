@@ -1,7 +1,28 @@
- 
+/*==================================
+    VARIABLES DE DISEÑO
+====================================*/
+:root{
+/*PALETA DE COLORES*/
+--colorPrimario-fondo: #395fac;
+--colorSecundario-escena : #b7f0f9;
+
+
+
+}
+
+/*==================================
+  ESTILOS GENERALES Y LAYOUT
+====================================*/
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+body{
+    background-color: var(--colorPrimario-fondo);
+}
+
 
 
