@@ -1,4 +1,5 @@
 import { Jugador } from "./modules/jugadores.js";
+import { showScene } from "./utils/utils.js";
 
 /*====VARIABLES GLOBALES====*/
 const REGEX_NOMBRE = /^[A-Z][a-zA-Z\s]{0,19}$/;
@@ -104,11 +105,12 @@ function escena1() {
             btnContinuar = document.createElement("button");
             btnContinuar.id = "continuar-mercado";
             btnContinuar.classList="continuar-mercado";
-            btnContinuar.textContent = "Continuar-Mercado"
+            btnContinuar.textContent = "Continuar-Mercado";
             estadoDiv.appendChild(btnContinuar);
 
             btnContinuar.addEventListener("click", () => {
-                
+                showScene("market");
+                escena2();
             })
         }
 
@@ -119,6 +121,11 @@ function escena1() {
 
     })
 
+
+}
+
+
+function escena2(){
 
 }
 
