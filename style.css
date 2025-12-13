@@ -5,8 +5,15 @@
 /*PALETA DE COLORES*/
 --colorPrimario-fondo: #395fac;
 --colorSecundario-escena : #b7f0f9;
+--colorTitulos-h2:white; 
+--colorTitulos-h1:#102547;
+
+/* ESPACIADOS Y MARGENES */
+--size-padding-5px : 5px;
 
 
+--margin-button-10px : 10px;
+--margin-top-10px : 10px;
 
 }
 
@@ -25,4 +32,52 @@ body{
 }
 
 
+h1 {
+    text-align: center;
+    margin-bottom: var(--margin-button-10px);
+    color: var(--colorTitulos-h2);
+}
 
+h2{
+    color: var(--colorTitulos-h1);
+}
+
+main{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* =====ESCENAS ===== */
+.scene{
+    background-color: var(--colorSecundario-escena);
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    
+    
+}
+
+.scene.active{
+    display: flex;
+}
+
+/* =====FORMULARIO ===== */
+
+.formulario-crear-jugador label{
+    display: flex;
+    padding: var(--size-padding-5px);
+}
+
+/* =====IMAGEN ===== */
+.img-container img{
+    width: 250px;
+}
+
+/* =====BOTONES ===== */
+.boton-crear {
+   margin-bottom: var(--margin-button-10px);
+   margin-top: var(--margin-top-10px);
+   
+   
+}
