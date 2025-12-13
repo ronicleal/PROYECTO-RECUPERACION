@@ -5,8 +5,10 @@
 /*PALETA DE COLORES*/
 --colorPrimario-fondo: #395fac;
 --colorSecundario-escena : #b7f0f9;
+--colorAcento : #e2e2e2;
 --colorTitulos-h2:white; 
 --colorTitulos-h1:#102547;
+
 
 /* ESPACIADOS Y MARGENES */
 --size-padding-5px : 5px;
@@ -45,8 +47,13 @@ h1 {
     color: var(--colorTitulos-h2);
 }
 
-h2{
-    color:var(--colorTitulos-h1)
+h2, h3{
+    color:var(--colorTitulos-h1);
+    text-align: center;
+}
+
+.nombre-jugador{
+    text-align: center;
 }
 
 main{
@@ -61,7 +68,7 @@ main{
     flex-direction: column;
     align-items: center;
     display: none;
-    padding: 30px 20px;
+    padding: 20px 20px;
 }
 
 .scene.active{
@@ -69,7 +76,9 @@ main{
 }
 
 /* =====FORMULARIO ===== */
-
+.formulario-crear-jugador{
+    color: var(--colorTitulos-h1);
+}
 .formulario-crear-jugador label{
     display: flex;
     padding: var(--size-padding-5px);
@@ -82,21 +91,21 @@ main{
 
 }
 
+.container-formulario{
+    border: 2px solid  #395fac;
+    background-color: var(--colorAcento);
+}
 /* =====IMAGEN ===== */
 .img-container img{
-    width: 250px;
+    width: 150px;
 }
 
-/* =====BOTONES E INPUT ===== */
-input#nombre-jugador {
-    padding: 8px 10px;
+
+input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
+    padding: 2px 5px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 80%;
-    max-width: 200px;
     text-align: center;
-    margin-bottom: var(--margin-button-15px);
-    margin-top: 10px;
+
 }
 
 
@@ -104,10 +113,5 @@ input#nombre-jugador {
 .boton-crear {
    margin-bottom: var(--margin-button-10px);
    margin-top: var(--margin-top-10px);
-  
-   
-   
-
-   
-   
 }
+

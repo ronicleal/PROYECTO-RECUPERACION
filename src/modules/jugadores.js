@@ -1,4 +1,4 @@
-export class jugador{
+export class Jugador{
     nombre;
     avatar;
     puntos;

@@ -22,13 +22,18 @@
                 <div class="img-container">
                     <img src="./image/player.png" alt="jugador">
                 </div>
+                <p id="nombre-jugador-display" class="nombre-jugador">Nombre del personaje</p>
 
             </div>
 
-            <input id="nombre-jugador" placeholder="Introduce el nombre" type="text" maxlength="20">
-
+            <div class="container-formulario">
             <div class="formulario-crear-jugador">
-                <h2>Introduce los datos del Jugador</h2>
+                <h3>Formulario para crear Jugador</h3>
+
+                <label>Nombre: 
+                <input id="nombre-jugador" placeholder="Introduce el nombre" type="text" maxlength="20">
+                </label>
+
                 <label>Ataque (Base:<span id="ataque-val"> 0 </span>):
                     <input type="number" id="ataque-input" min="0" max="10" value="0">
                 </label>
@@ -41,12 +46,16 @@
                     <input type="number" id="vida-input" min="0" max="10" value="0">               
                 </label>
 
-                <p id="puntos-gastados">Puntos diponibles para repartir: 10</p>
-
+               
+                <p id="puntos-restantes">Puntos diponibles para repartir (Máx. 10): 10</p>
+               
                 
+            </div>
             </div>
 
             <button id="crear-jugador" class="boton-crear">Crear Jugador</button>
+
+            <div id="estado-jugador" class="player-card"></div>
         </div>
 
 
