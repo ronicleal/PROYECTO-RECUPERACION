@@ -10,10 +10,13 @@
 
 /* ESPACIADOS Y MARGENES */
 --size-padding-5px : 5px;
+--size-paddig-20px : 20px;
 
 
 --margin-button-10px : 10px;
+--margin-button-15px : 15px;
 --margin-top-10px : 10px;
+
 
 }
 
@@ -29,6 +32,10 @@
 
 body{
     background-color: var(--colorPrimario-fondo);
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    padding: var(--size-paddig-20px);
 }
 
 
@@ -39,7 +46,7 @@ h1 {
 }
 
 h2{
-    color: var(--colorTitulos-h1);
+    color:var(--colorTitulos-h1)
 }
 
 main{
@@ -54,8 +61,7 @@ main{
     flex-direction: column;
     align-items: center;
     display: none;
-    
-    
+    padding: 30px 20px;
 }
 
 .scene.active{
@@ -69,15 +75,39 @@ main{
     padding: var(--size-padding-5px);
 }
 
+.formulario-crear-jugador input{
+     border: 1px solid #ccc;
+     max-width: 200px;
+     text-align: center;
+
+}
+
 /* =====IMAGEN ===== */
 .img-container img{
     width: 250px;
 }
 
-/* =====BOTONES ===== */
+/* =====BOTONES E INPUT ===== */
+input#nombre-jugador {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 200px;
+    text-align: center;
+    margin-bottom: var(--margin-button-15px);
+    margin-top: 10px;
+}
+
+
+
 .boton-crear {
    margin-bottom: var(--margin-button-10px);
    margin-top: var(--margin-top-10px);
+  
+   
+   
+
    
    
 }
