@@ -119,7 +119,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 
 
-.boton-crear {
+.boton-crear, 
+.continuar-mercado {
    margin-bottom: var(--margin-button-10px);
    margin-top: var(--margin-top-10px);
    background-color: var(--colorBotones);
@@ -127,7 +128,12 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
    border: none;
    border-radius: 5px;
    cursor: pointer;
-   
+   transition: 0.3s;
+   display: block;
+}
+
+.boton-crear:hover{
+    background-color: var(--colorPrimario-fondo);
 }
 
 /* =====TABLA DE ESTADO INICIAL DEL JUGADOR===== */

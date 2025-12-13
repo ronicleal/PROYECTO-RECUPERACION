@@ -98,6 +98,20 @@ function escena1() {
                 <div class="stat-box">⭐ Puntos: ${jugador.puntos}</div>
             </div>
         `;
+
+        let btnContinuar = document.getElementById("continuar-mercado");
+        if(!btnContinuar){
+            btnContinuar = document.createElement("button");
+            btnContinuar.id = "continuar-mercado";
+            btnContinuar.classList="continuar-mercado";
+            btnContinuar.textContent = "Continuar-Mercado"
+            estadoDiv.appendChild(btnContinuar);
+
+            btnContinuar.addEventListener("click", () => {
+                
+            })
+        }
+
         
         
         
