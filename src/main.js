@@ -91,34 +91,16 @@ function escena1() {
         const estadoDiv = document.getElementById("estado-jugador");
 
         estadoDiv.innerHTML = `
-        <table class="player-stasts-table">
-            <thead>
-                <tr>
-                    <th>Parámetro</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>⚔️Ataque Base</td>
-                    <td>${jugador.ataqueBase}</td>
-                </tr>
-                <tr>
-                    <td>🛡️Defensa Base</td>
-                    <td>${jugador.defensaBase}</td>
-                </tr>
-                <tr>
-                    <td>♥️Vida Base </td>
-                    <td>${jugador.vida} / ${jugador.vidaMax}</td>
-                </tr>
-                <tr>
-                    <td>⭐Puntos </td>
-                    <td>${jugador.puntos}</td>
-                </tr>
-            </tbody>
-        </table>
-        `
-
+            <div class="stats-grid">
+                <div class="stat-box">⚔️ Ataque: ${jugador.ataqueBase}</div>
+                <div class="stat-box">🛡️ Defensa: ${jugador.defensaBase}</div>
+                <div class="stat-box">❤️ Vida: ${jugador.vida} / ${jugador.vidaMax}</div>
+                <div class="stat-box">⭐ Puntos: ${jugador.puntos}</div>
+            </div>
+        `;
+        
+        
+        
 
 
     })
