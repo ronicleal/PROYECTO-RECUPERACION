@@ -127,6 +127,8 @@ function escena1() {
 
 function escena2(){
 
+    
+
 }
 
 escena1();
