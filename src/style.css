@@ -165,3 +165,12 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 
 }
+
+/* =====Notificacion de descuento aleatorio===== */
+.descuento-notificacion{
+    text-align: center;
+    font-size: var(--font-size-p);
+    color: var(--colorTitulos-h1);
+    padding: var(--size-padding-10px);
+    background-color: #e3c7ff;
+}

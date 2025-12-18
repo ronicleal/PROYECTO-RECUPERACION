@@ -127,7 +127,7 @@ function escena1() {
 
 
 function escena2(){
-    seleccionados = [];// Lista de productos seleccionados
+    seleccionados = []; // Lista de productos seleccionados
     const container = document.getElementById("market-container");
     container.innerHTML = "";
 
@@ -141,8 +141,28 @@ function escena2(){
     const descuentoAleatorio = Math.floor(Math.random() * 31);
     // 4. Aplicar el descuento solo a los productos de esa rareza
     const mercadoDescontado = aplicarDescuentoPorRareza(rarezaDescontada, descuentoAleatorio);
-    
 
+    //=== Notificación del descuento ===
+
+    // 1. Contenedor de notificacion del descuento en los productos
+    let notifArea = document.getElementById("notificacion-mercado");
+    if(!notifArea){
+        notifArea = document.createElement("div");
+        notifArea.id = "notificacion-mercado";
+        //Insertar la notificacion antes del contendor de productos
+        container.parentNode.insertBefore(notifArea, container);
+    }
+    notifArea.innerHTML = ""; //Limpiar notificaciones anteriores
+
+    // 2. Crear el elemento de notificacion
+    const notificacionDescuento = document.createElement("p");
+    notificacionDescuento.classList.add("descuento-notificacion");
+    // 3. Asignar el contenido dinámico
+    notificacionDescuento.textContent = `🚨 ¡OFERTA! Descuento del 📢${descuentoAleatorio}%🎉 aplicado a ítems de rareza: ${rarezaDescontada.toUpperCase()} 🚨`;
+    // 4. Insertar la notificación a su nuevo contenedor
+    notifArea.appendChild(notificacionDescuento);
+
+    
 
 
     
