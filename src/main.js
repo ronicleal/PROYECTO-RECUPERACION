@@ -6,6 +6,7 @@ import { showScene } from "./utils/utils.js";
 const REGEX_NOMBRE = /^[A-Z][a-zA-Z\s]{0,19}$/;
 const PUNTOS_DISPONIBLES = 10;
 const VIDA_BASE = 100;
+let seleccionados = [];
 
 function escena1() {
     const btnCrear = document.getElementById("crear-jugador");
@@ -126,7 +127,7 @@ function escena1() {
 }
 
 
-function escena2(){
+function escena2() {
     seleccionados = []; // Lista de productos seleccionados
     const container = document.getElementById("market-container");
     container.innerHTML = "";
@@ -162,7 +163,47 @@ function escena2(){
     // 4. Insertar la notificación a su nuevo contenedor
     notifArea.appendChild(notificacionDescuento);
 
-    
+    //=== Mostrar productos en tarjetas ===
+
+    mercadoDescontado.forEach(producto => {
+        const card = document.createElement("div");
+        card.classList.add("card-producto");
+
+        const img = document.createElement("img");
+        img.src = obtenerImagen(producto.nombre);
+        img.alt = producto.nombre;
+
+        const texto = document.createElement("p");
+        texto.textContent = producto.mostrarProducto();
+
+        //Botón añadir o quitar de la cesta
+        const btnAñadir = document.createElement("button");
+        btnAñadir.textContent = "Añadir";
+        btnAñadir.style.marginTop = "5px";
+
+        btnAñadir.addEventListener("click", () => {
+            if(!seleccionados.includes(producto)){
+                //Añadir a la cesta
+                seleccionados.push(producto);
+                card.classList.add("selected");
+                btnAñadir.textContent = "Retirar";
+            }else{
+                //Quitar de la cesta
+                seleccionados = seleccionados.filter(p => p !== producto);
+                card.classList.add("selected");
+                btnAñadir.textContent = "Añadir";
+            }
+
+            //Aqui pongo luego la funcion mostrarSeleccionados();
+        });
+
+        card.appendChild(img);
+        card.appendChild(texto);
+        card.appendChild(btnAñadir);
+        container.appendChild(card);
+    });
+
+
 
 
     
@@ -170,3 +211,25 @@ function escena2(){
 }
 
 escena1();
+
+function obtenerImagen(nombre){
+    const imagenes = {
+        "Espada corta": "./image/espada.png",
+        "Arco de caza": "./image/b_t_01.png",
+        "Armadura de cuero": "./image/armor.png",
+        "Poción pequeña": "./image/hp.png",
+        "Espada rúnica": "./image/espada_runica.png",
+        "Escudo de roble": "./image/shield.png",
+        "Poción grande": "./image/pocion_grande.png",
+        "Mandoble épico": "./image/mandoble.png",
+        "Placas dracónicas": "./image/placas_draconicas.png",
+        "Elixir legendario": "./image/elixir_legendario.png",
+        "Goblin": "./image/goblin.png",
+        "Orco Guerrero": "./image/orco.png",
+        "Esqueleto": "./image/esqueleto.png",
+        "Dragón Rojo": "./image/dragon.png",
+    };
+
+    // Si no existe imagen, usa una genérica
+    return imagenes[nombre] || "./image/default.png";
+}

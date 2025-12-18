@@ -20,11 +20,14 @@
 /* ESPACIADOS Y MARGENES */
 --size-padding-5px : 5px;
 --size-padding-10px : 10px;
+--size-padding-15px : 15px;
 --size-paddig-20px : 20px;
 
 
+--margin-button-5px : 5px;
 --margin-button-10px : 10px;
 --margin-button-15px : 15px;
+--margin-button-20px : 20px;
 --margin-top-10px : 10px;
 
 
@@ -172,5 +175,34 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     font-size: var(--font-size-p);
     color: var(--colorTitulos-h1);
     padding: var(--size-padding-10px);
+    margin-bottom: var(--margin-button-20px);
     background-color: #e3c7ff;
+}
+
+/* =====Tartejas Mercado de productos===== */
+#market-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.card-producto{
+    flex: 0 0 150px;
+    padding: var(--size-padding-10px);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: var(--colorAcento);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.card-producto img{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: var(--margin-button-5px);
+   
 }
