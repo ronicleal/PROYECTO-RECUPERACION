@@ -27,3 +27,7 @@ export function aplicarDescuentoPorRareza(rareza, porcentaje){
 export function buscarProducto(nombre){
     return mercado.find(producto => producto.nombre.toLowerCase() === nombre.toLowerCase()) || null;
 }
+
+export function obtenerTodasLasRarezas(){
+    return [...new Set(mercado.map(producto => producto.rareza))];
+}
