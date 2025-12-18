@@ -1,4 +1,5 @@
 import { Jugador } from "./modules/jugadores.js";
+import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
 import { showScene } from "./utils/utils.js";
 
 /*====VARIABLES GLOBALES====*/
@@ -133,7 +134,16 @@ function escena2(){
     //=== Lógica del descuento ===
 
     // 1. Obtener todas las rarezas únicas
-    const todasLasRarezas = 
+    const todasLasRarezas = obtenerTodasLasRarezas();
+    // 2. Elegir una rareza aleatoria a la que aplicar el descuento
+    const rarezaDescontada = todasLasRarezas[Math.floor(Math.random() * todasLasRarezas.length)];
+    // 3. Generar un descuento aleatorio de 0 al 30%
+    const descuentoAleatorio = Math.floor(Math.random() * 31);
+    // 4. Aplicar el descuento solo a los productos de esa rareza
+    const mercadoDescontado = aplicarDescuentoPorRareza(rarezaDescontada, descuentoAleatorio);
+    
+
+
 
     
 
