@@ -127,7 +127,7 @@ function escena2() {
         btnContinuar = document.createElement("button");
         btnContinuar.id = "continuar-mercado";
         btnContinuar.classList = "continuar-mercado";
-        btnContinuar.textContent = "Continuar-Mercado";
+        btnContinuar.textContent = "Continuar";
         estadoDiv.appendChild(btnContinuar);
 
         btnContinuar.addEventListener("click", () => {
@@ -135,11 +135,6 @@ function escena2() {
             escena3();
         })
     }
-
-
-
-
-
 
 
 }
