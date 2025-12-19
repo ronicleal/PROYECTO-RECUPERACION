@@ -97,7 +97,7 @@ main{
     display: flex;
 }
 
-/* =====FORMULARIO ===== */
+/* =============FORMULARIO ============= */
 
 .input-group{
     display: flex;
@@ -130,11 +130,28 @@ main{
     max-width: 400px;
     margin: 0 auto;
 }
-/* =====IMAGEN ===== */
+
+/* ==============IMAGENES ================ */
+
+/* imagen jugador*/
 .img-container img{
     width: 150px;
 }
 
+/*Imagenes productos */
+.card-producto img{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: var(--margin-button-5px);
+   
+}
+
+/*Imagen Monedero */
+
+
+
+/* ==============NOMBRE DEL JUGADOR ================ */
 
 input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     padding: 2px 5px;
@@ -143,8 +160,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 }
 
-
-
+/* ==============BOTONES================ */
 .boton-crear, 
 .continuar-mercado {
    margin-bottom: var(--margin-button-10px);
@@ -230,10 +246,3 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     transition: transform 0.2s;
 }
 
-.card-producto img{
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: var(--margin-button-5px);
-   
-}
