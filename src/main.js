@@ -7,31 +7,47 @@ const REGEX_NOMBRE = /^[A-Z][a-zA-Z\s]{0,19}$/;
 const PUNTOS_DISPONIBLES = 10;
 const VIDA_BASE = 100;
 let seleccionados = [];
+let jugador = null;
 
+function iniciarJuego() {
+    escena1();
+}
+
+// ESCENA 1: Formulario y lógica de puntos
 function escena1() {
     const btnCrear = document.getElementById("crear-jugador");
+    const inputs = document.querySelectorAll('.formulario-crear-jugador input[type="number"]');
 
     //Funcion de actualizacion visual y calculo de puntos
-    function validarYactualizarPuntos() {
-        const ataque = parseInt(document.getElementById("ataque-input").value) || 0;
-        const defensa = parseInt(document.getElementById("defensa-input").value) || 0;
-        const vidaExtra = parseInt(document.getElementById("vida-input").value) || 0;
+    function validarYactualizarPuntos(e) {
+        const ataqueInput = document.getElementById("ataque-input");
+        const defensaInput = document.getElementById("defensa-input");
+        const vidaInput = document.getElementById("vida-input");
+
+        let ataque = parseInt(ataqueInput.value) || 0;
+        let defensa = parseInt(defensaInput.value) || 0;
+        let vidaExtra = parseInt(vidaInput.value) || 0;
+
+
+        // --- RESTRICCIÓN PARA NO EXCEDER LOS 10 PUNTOS ---
+        let totalActual = ataque + defensa + vidaExtra;
+
+        if (totalActual > PUNTOS_DISPONIBLES) {
+            // Calculamos cuánto nos hemos pasado
+            const exceso = totalActual - PUNTOS_DISPONIBLES;
+            if (e && e.target) {
+                // Restamos ese exceso al input que el usuario acaba de cambiar
+                e.target.value = parseInt(e.target.value) - exceso;
+                // Actualizamos las variables locales con el nuevo valor corregido
+                ataque = parseInt(ataqueInput.value) || 0;
+                defensa = parseInt(defensaInput.value) || 0;
+                vidaExtra = parseInt(vidaInput.value) || 0;
+            }
+        }
 
         //Suma de puntos repartidos
         const puntosRepartidos = ataque + defensa + vidaExtra;
         const puntosRestantes = PUNTOS_DISPONIBLES - puntosRepartidos;
-
-        let valido = true;
-
-        //1. Validar que ninguna propiedad sea negativa
-        if (ataque < 0 || defensa < 0 || vidaExtra < 0) {
-            valido = false;
-        }
-
-        //2. Validar el total de puntos (max 10 extra)
-        if (puntosRepartidos > PUNTOS_DISPONIBLES) {
-            valido = false;
-        }
 
         //3. Actualizar el DOM
         document.getElementById("puntos-restantes").textContent =
@@ -41,25 +57,11 @@ function escena1() {
         document.getElementById("defensa-val").textContent = defensa;
         document.getElementById("vida-val").textContent = VIDA_BASE + vidaExtra;
 
-        //Resaltar si existe el limite
-        if (!valido) {
-            document.getElementById("puntos-restantes").style.color = 'red';
-        } else {
-            document.getElementById("puntos-restantes").style.color = "#102547";
-        }
-
-        //Devolvemos si es válido (Para el boton crear)
-        return valido && (puntosRepartidos <= PUNTOS_DISPONIBLES);
-
     }
 
-    // Asignar listeners a todos los inputs numéricos (para feedback visual instantáneo)
-    document.querySelectorAll('.formulario-crear-jugador input[type="number"]').forEach(input => {
-        input.addEventListener('input', validarYactualizarPuntos);
+    inputs.forEach(input => {
+        input.addEventListener('input', (e) => validarYactualizarPuntos(e));
     });
-
-    // Asegurar que se ejecuta la primera vez para setear los valores.
-    validarYactualizarPuntos();
 
     //LOGICA DEL BOTON CREAR JUGADOR
     btnCrear.addEventListener("click", function () {
@@ -73,61 +75,80 @@ function escena1() {
 
         // A. Validar nombre (RegEx) y que no este vacio
         if (!nombre || !REGEX_NOMBRE.test(nombre)) {
-            alert('⚠️ Error: El nombre debe tener la primera letra mayúscula, solo letras/espacios y no exceder los 20 caracteres.');
-            return;
-        }
-
-        // B. Validar puntos y limite
-        const puntosRepartidos = ataque + defensa + vidaExtra;
-        if (puntosRepartidos > PUNTOS_DISPONIBLES || ataque < 0 || defensa < 0 || vidaExtra < 0) {
-            alert(`⚠️ Error: El total de puntos repartidos (${puntosRepartidos}) no puede exceder el límite de ${PUNTOS_DISPONIBLES} o ser negativo.`);
+            alert('⚠️ Nombre inválido: Primera letra mayúscula y máx 20 caracteres.');
             return;
         }
 
         //Crear jugador
-        let jugador = new Jugador(nombre, ataque, defensa, VIDA_BASE + vidaExtra);
+        jugador = new Jugador(nombre, ataque, defensa, VIDA_BASE + vidaExtra);
 
-        //Mostrar el nombre en el HTML
-        document.getElementById("nombre-jugador-display").textContent = jugador.nombre;
+        // Pasamos a la Escena 2
+        escena2();
 
-        //Mostrar el estado del jugador en la misma escena
-        const estadoDiv = document.getElementById("estado-jugador");
+    });
 
-        estadoDiv.innerHTML = `
-            <div class="stats-grid">
-                <div class="stat-box">⚔️ Ataque: ${jugador.ataqueBase}</div>
-                <div class="stat-box">🛡️ Defensa: ${jugador.defensaBase}</div>
-                <div class="stat-box">❤️ Vida: ${jugador.vida} / ${jugador.vidaMax}</div>
-                <div class="stat-box">⭐ Puntos: ${jugador.puntos}</div>
+    // Asegurar que se ejecuta la primera vez para setear los valores.
+    validarYactualizarPuntos();
+
+
+
+
+}
+
+// ESCENA 2: Visualización del estado inicial
+function escena2() {
+    // Ocultamos el formulario y mostramos la tarjeta de estado
+    document.querySelector(".container-formulario").style.display = "none";
+    document.getElementById("crear-jugador").style.display = "none";
+    
+
+    //Mostrar el nombre en el HTML
+    document.getElementById("nombre-jugador-display").textContent = jugador.nombre;
+
+    //Mostrar el estado del jugador en la misma escena
+    const estadoDiv = document.getElementById("estado-jugador");
+
+    estadoDiv.innerHTML = `
+    <div class="stats-container-final">
+            <div class="stat-row">
+                <div class="stat-box-final">⚔️ Ataque: ${jugador.ataqueBase}</div>
+                <div class="stat-box-final">🛡️ Defensa: ${jugador.defensaBase}</div>
             </div>
+
+            <div class="stat-row">
+                <div class="stat-box-final">❤️ Vida: ${jugador.vida} / ${jugador.vidaMax}</div>
+                <div class="stat-box-final">⭐ Puntos: ${jugador.puntos}</div>
+            </div>
+    </div>
         `;
 
-        let btnContinuar = document.getElementById("continuar-mercado");
-        if(!btnContinuar){
-            btnContinuar = document.createElement("button");
-            btnContinuar.id = "continuar-mercado";
-            btnContinuar.classList="continuar-mercado";
-            btnContinuar.textContent = "Continuar-Mercado";
-            estadoDiv.appendChild(btnContinuar);
+    let btnContinuar = document.getElementById("continuar-mercado");
+    if (!btnContinuar) {
+        btnContinuar = document.createElement("button");
+        btnContinuar.id = "continuar-mercado";
+        btnContinuar.classList = "continuar-mercado";
+        btnContinuar.textContent = "Continuar-Mercado";
+        estadoDiv.appendChild(btnContinuar);
 
-            btnContinuar.addEventListener("click", () => {
-                showScene("market");
-                escena2();
-            })
-        }
-
-        
-        
-        
+        btnContinuar.addEventListener("click", () => {
+            showScene("market");
+            escena3();
+        })
+    }
 
 
-    })
+
+
+
 
 
 }
 
 
-function escena2() {
+
+
+
+function escena3() {
     seleccionados = []; // Lista de productos seleccionados
     const container = document.getElementById("market-container");
     container.innerHTML = "";
@@ -147,7 +168,7 @@ function escena2() {
 
     // 1. Contenedor de notificacion del descuento en los productos
     let notifArea = document.getElementById("notificacion-mercado");
-    if(!notifArea){
+    if (!notifArea) {
         notifArea = document.createElement("div");
         notifArea.id = "notificacion-mercado";
         //Insertar la notificacion antes del contendor de productos
@@ -182,12 +203,12 @@ function escena2() {
         btnAñadir.style.marginTop = "5px";
 
         btnAñadir.addEventListener("click", () => {
-            if(!seleccionados.includes(producto)){
+            if (!seleccionados.includes(producto)) {
                 //Añadir a la cesta
                 seleccionados.push(producto);
                 card.classList.add("selected");
                 btnAñadir.textContent = "Retirar";
-            }else{
+            } else {
                 //Quitar de la cesta
                 seleccionados = seleccionados.filter(p => p !== producto);
                 card.classList.add("selected");
@@ -206,13 +227,13 @@ function escena2() {
 
 
 
-    
+
 
 }
 
-escena1();
+iniciarJuego();
 
-function obtenerImagen(nombre){
+function obtenerImagen(nombre) {
     const imagenes = {
         "Espada corta": "./image/espada.png",
         "Arco de caza": "./image/b_t_01.png",
