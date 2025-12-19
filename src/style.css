@@ -23,7 +23,7 @@
 --size-padding-15px : 15px;
 --size-paddig-20px : 20px;
 
-
+--margin-button-2px : 2px;
 --margin-button-5px : 5px;
 --margin-button-10px : 10px;
 --margin-button-15px : 15px;
@@ -96,25 +96,36 @@ main{
 }
 
 /* =====FORMULARIO ===== */
-.formulario-crear-jugador{
-    color: var(--colorTitulos-h1);
-}
-.formulario-crear-jugador label{
+.input-group{
     display: flex;
-    padding: var(--size-padding-5px);
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: flex-start;
 }
 
-.formulario-crear-jugador input{
-     border: 1px solid #ccc;
-     max-width: 200px;
-     text-align: center;
-
+.input-group label{
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+    font-weight: bold;
+    
 }
 
+.input-group input{
+    width: 100%;
+    max-width: none;
+    height: 40px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    padding: var(--size-padding-10px);
+    font-size: var(--font-size-title-h2);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
 .container-formulario{
-    border: 2px solid  #395fac;
-    background-color: var(--colorAcento);
-     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    max-width: 400px;
+    margin: 0 auto;
 }
 /* =====IMAGEN ===== */
 .img-container img{
