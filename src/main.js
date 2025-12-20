@@ -248,13 +248,44 @@ function escena3() {
 
     }
 
+    const btnComprar = document.createElement("button");
+    btnComprar.id = "btn-comprar";
+    btnComprar.textContent = "Comprar";
+    btnComprar.classList.add("btn-comprar");
     
+    const marketScene = document.getElementById("market");
+    marketScene.appendChild(btnComprar);
+
+    btnComprar.addEventListener("click", () => {
+        if(seleccionados.length === 0){
+            alert("No has seleccionado ningún producto!");
+            return;
+        }
+
+        showScene("enemies");
+        escena4();
+        
+    })
+
 
 
 
 
 
 }
+
+function escena4(){
+    const contenedor = document.getElementById("enemies-container");
+    contenedor.innerHTML = "";
+
+    const titulo = document.createElement("h2");
+    titulo.textContent = "Estado Actual del Jugador";
+    contenedor.appendChild(titulo);
+}
+
+
+
+
 
 iniciarJuego();
 

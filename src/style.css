@@ -207,7 +207,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 /* ==============BOTONES================ */
 .boton-crear, 
-.continuar-mercado {
+.continuar-mercado, .btn-comprar {
    margin-bottom: var(--margin-button-10px);
    margin-top: var(--margin-top-10px);
    background-color: var(--colorBotones);
