@@ -199,6 +199,10 @@ function escena3() {
 
         btnAñadir.addEventListener("click", () => {
             if (!seleccionados.includes(producto)) {
+                if(seleccionados.length >= 6){
+                    alert("Tu mochila esta llena!");
+                    return;
+                }
                 //Añadir a la cesta
                 seleccionados.push(producto);
                 card.classList.add("selected");
@@ -210,7 +214,7 @@ function escena3() {
                 btnAñadir.textContent = "Añadir";
             }
 
-            //Aqui pongo luego la funcion mostrarSeleccionados();
+            mostrarSeleccionados();
         });
 
         card.appendChild(img);
@@ -219,6 +223,32 @@ function escena3() {
         container.appendChild(card);
     });
 
+    function mostrarSeleccionados(){
+        //1. Obtengo todos los slot del inventario
+        const slots = document.querySelectorAll(".inventory-slot");
+
+        //2. Limpio todos los slots antes de volver a pintar
+        slots.forEach(slot => slot.innerHTML = "");
+
+        //3. Recorro toda la lista de productos seleccionados
+        seleccionados.forEach((producto, indice) => {
+            //Si hay un slot disponible para este indice
+            if(slots[indice]){
+                const img = document.createElement("img");
+                //Llamo a la funcion obtener imagen
+                img.src = obtenerImagen(producto.nombre);
+                img.alt = producto.nombre;
+                img.style.width = "100%";
+                img.style.height = "100%";
+                img.style.objectFit = "contain";
+
+                slots[indice].appendChild(img);
+            }
+        })
+
+    }
+
+    
 
 
 

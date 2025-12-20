@@ -291,6 +291,9 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     transition: transform 0.2s;
 }
 
+.card-producto.selected{
+    background-color:var(--colorBotones);
+}
 /* =====FOOTER===== */
 footer{
     height: 150px;
