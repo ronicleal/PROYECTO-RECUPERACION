@@ -54,6 +54,7 @@ body{
     height: 100vh;
     overflow: hidden;
     margin: 0;
+    padding: 0;
 }
 
 
@@ -62,16 +63,19 @@ h1 {
     margin-bottom: var(--margin-button-10px);
     color: var(--colorTitulos-h2);
     font-size: var(--font-size-title-h1);
+    margin-top: 10px;
 }
 
 h2, h3{
     color:var(--colorTitulos-h1);
     text-align: center;
-    font-size: var(--font-size-title-h2);
+    font-size: var(--font-size-title-h1);
 }
 
 .nombre-jugador{
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 main{
@@ -82,10 +86,12 @@ main{
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
+    
 }
 
 /* =====ESCENAS ===== */
 .scene{
+    position: relative;
     background-color: var(--colorSecundario-escena);
     flex-direction: column;
     align-items: center;
@@ -102,7 +108,7 @@ main{
 .input-group{
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     align-items: flex-start;
 }
 
@@ -135,7 +141,11 @@ main{
 
 /* imagen jugador*/
 .img-container img{
-    width: 150px;
+    width: 250px;
+    position:absolute;
+    left: 1px;
+    top: 60px;
+    
 }
 
 /*Imagenes productos */
@@ -246,3 +256,36 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     transition: transform 0.2s;
 }
 
+/* =====FOOTER===== */
+footer{
+    height: 150px;
+    width: 100%;
+
+    background-color:var(--colorPrimario-fondo);
+    z-index: 10;/* Asegura que siempre esté por encima */
+
+    border-top: 4px solid var(--colorPrimario-fondo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-padding-5px);
+
+    flex-shrink: 0; /*Impide que el footer se encoja si el main crece */
+    
+}
+
+#inventory-container{
+    display: flex;
+    gap: 10px;
+    width: auto;
+    height: 80px;
+}
+
+.inventory-slot{
+    width: 80px;
+    height: 80px;
+    flex: 1;
+    background-color: var(--colorSecundario-escena);
+    border: 5px solid var(--colorTitulos-h1);
+    aspect-ratio: 1 / 1;
+}
