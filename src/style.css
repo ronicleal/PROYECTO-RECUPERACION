@@ -158,9 +158,44 @@ main{
 }
 
 /*Imagen Monedero */
+#monedero-container {
+    position: fixed;
+    left: 2vw; /* 2% del ancho */
+    bottom: 1vh; /* 1% del alto */
+    width: 100px;
+    z-index: 100; /* Por encima de todo */
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#monedero-container img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
+#dinero-actual{
+    position: absolute;
+    margin-top: 5px;
+}
+
+.monedero-animado{
+    animation: slideInMonedero 1.5s ease-out forwards;
+}
+
+@keyframes slideInMonedero {
+    from {
+        transform: translateX(-200%) rotate(-20deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+}
 /* ==============NOMBRE DEL JUGADOR ================ */
 
 input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
