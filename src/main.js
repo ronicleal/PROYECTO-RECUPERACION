@@ -90,8 +90,8 @@ function escena1() {
     // Asegurar que se ejecuta la primera vez para setear los valores.
     validarYactualizarPuntos();
 
-
-
+    //Oculto la imagen al principio para que aparezca en la escena2
+    document.querySelector(".img-container").style.display = "none";
 
 }
 
@@ -100,6 +100,7 @@ function escena2() {
     // Ocultamos el formulario y mostramos la tarjeta de estado
     document.querySelector(".container-formulario").style.display = "none";
     document.getElementById("crear-jugador").style.display = "none";
+    document.querySelector(".img-container").style.display = "block";
     
 
     //Mostrar el nombre en el HTML
@@ -200,7 +201,7 @@ function escena3() {
         btnAñadir.addEventListener("click", () => {
             if (!seleccionados.includes(producto)) {
                 if(seleccionados.length >= 6){
-                    alert("Tu mochila esta llena!");
+                    alert("Tu carrito esta lleno!");
                     return;
                 }
                 //Añadir a la cesta
