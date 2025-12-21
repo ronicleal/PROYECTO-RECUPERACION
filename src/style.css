@@ -74,10 +74,23 @@ h2, h3{
     font-size: var(--font-size-title-h1);
 }
 
+
 .nombre-jugador{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-weight: bold;
+    font-size:x-large;
+    color: var(--colorTitulos-h1);
+}
+
+.nombre-jugador-escena4{
+    text-align: center;
+    padding: 10px;
+    font-size:x-large;
+    font-weight: bold;
+    color: var(--colorTitulos-h1);
+    
 }
 
 main{
@@ -209,7 +222,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 /* ==============BOTONES================ */
 .boton-crear, 
-.continuar-mercado, .btn-comprar{
+.continuar-mercado, .btn-comprar, .continuar-enemigos{
    margin-bottom: var(--margin-button-20px);
    margin-top: var(--margin-top-10px);
    background-color: var(--colorBotones);
@@ -228,7 +241,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
    margin-bottom: var(--margin-button-20px);
 }
 
-.boton-crear:hover, .continuar-mercado:hover, .btn-comprar:hover{
+.boton-crear:hover, .continuar-mercado:hover,
+.btn-comprar:hover, .continuar-enemigos:hover {
     background-color: var(--colorPrimario-fondo);
 }
 

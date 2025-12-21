@@ -320,10 +320,58 @@ function escena4(){
 
     const titulo = document.createElement("h2");
     titulo.textContent = "Estado Actual del Jugador";
+    
+    const nombreJugador = document.createElement("p");
+    nombreJugador.classList.add("nombre-jugador-escena4")
+    nombreJugador.textContent = `${jugador.nombre}`;
+
     contenedor.appendChild(titulo);
+    contenedor.appendChild(nombreJugador);
+
+    jugador.vida = jugador.vidaTotal;
+
+    //Contenedor del estado actual
+    const estadoActual = document.createElement("div");
+    estadoActual.classList.add("player-estado-final");
+
+    estadoActual.innerHTML =  `
+    <div class="stats-container-final">
+            <div class="stat-row">
+                <div class="stat-box-final">⚔️ Ataque: ${jugador.ataqueTotal}</div>
+                <div class="stat-box-final">🛡️ Defensa: ${jugador.defensaTotal}</div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-box-final">❤️ Vida: ${jugador.vida} / ${jugador.vidaTotal}</div>
+                <div class="stat-box-final">⭐ Puntos: ${jugador.puntos}</div>
+            </div>
+    </div>
+        `;
+
+    contenedor.appendChild(estadoActual);
+
+    //Boton para ir a la siguiente escena
+    const btnContinuarEnemigos = document.createElement("button");
+    btnContinuarEnemigos.id = "continuar-enemigos";
+    btnContinuarEnemigos.classList.add("continuar-enemigos");
+    btnContinuarEnemigos.textContent = "Continuar";
+
+    contenedor.appendChild(btnContinuarEnemigos);
+
+    btnContinuarEnemigos.addEventListener("click", () => {
+        escena5();
+    });
+
+
+
+
 }
 
+function escena5(){
+    const contendor = document.getElementById("enemies");
+    contendor.innerHTML ="";
 
+}
 
 
 
