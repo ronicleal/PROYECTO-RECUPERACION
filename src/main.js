@@ -190,11 +190,12 @@ function escena3() {
         img.src = obtenerImagen(producto.nombre);
         img.alt = producto.nombre;
 
-        const texto = document.createElement("p");
-        texto.textContent = producto.mostrarProducto();
+        const texto = document.createElement("div");
+        texto.innerHTML = producto.mostrarProducto();
 
         //Botón añadir o quitar de la cesta
         const btnAñadir = document.createElement("button");
+        btnAñadir.classList.add("btn-añadir");
         btnAñadir.textContent = "Añadir";
         btnAñadir.style.marginTop = "5px";
 
@@ -220,7 +221,7 @@ function escena3() {
             } else {
                 //Quitar de la cesta
                 seleccionados = seleccionados.filter(p => p !== producto);
-                card.classList.add("selected");
+                card.classList.remove("selected");
                 btnAñadir.textContent = "Añadir";
             }
 

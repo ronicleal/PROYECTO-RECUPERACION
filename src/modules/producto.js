@@ -32,7 +32,13 @@ export class Producto{
                 efectoBonus = 'Efecto Desconocido';
         }
 
-        return `${this.nombre} ${EUR.format(this.precio)} — ${efectoBonus}:${this.bonus}`
+        return `
+            <div class="info-producto">
+                <h4 class="prod-nombre">${this.nombre}</h4>
+                <span class="prod-tipo">${efectoBonus}: + ${this.bonus}</span>
+                <p class="prod-precio">${EUR.format(this.precio)}</p>
+            </div>
+        `;
     }
 
 

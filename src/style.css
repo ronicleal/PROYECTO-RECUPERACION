@@ -15,6 +15,8 @@
 --font-size-title-h1: 2rem;
 --font-size-title-h2: 1rem;
 --font-size-p: 1.2rem;
+--font-size-p2: 1.1rem;
+
 
 
 /* ESPACIADOS Y MARGENES */
@@ -207,8 +209,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 /* ==============BOTONES================ */
 .boton-crear, 
-.continuar-mercado, .btn-comprar {
-   margin-bottom: var(--margin-button-10px);
+.continuar-mercado, .btn-comprar{
+   margin-bottom: var(--margin-button-20px);
    margin-top: var(--margin-top-10px);
    background-color: var(--colorBotones);
    padding: var(--size-padding-5px);
@@ -218,15 +220,34 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
    transition: 0.3s;
    display: block;
 
+   font-weight: bold;
+
    width: fit-content;
    margin-left: auto;
    margin-right: auto;
    margin-bottom: var(--margin-button-20px);
 }
 
-.boton-crear:hover, .continuar-mercado:hover{
+.boton-crear:hover, .continuar-mercado:hover, .btn-comprar:hover{
     background-color: var(--colorPrimario-fondo);
 }
+
+.btn-añadir{
+    position: absolute;
+    bottom: 15px;
+    background-color: #0ffff8;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn-añadir:hover{
+    background-color:var(--colorPrimario-fondo);
+}
+
 
 /* =====TABLA DE ESTADO INICIAL DEL JUGADOR===== */
 .stats-container-final{
@@ -281,19 +302,66 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 .card-producto{
     flex: 0 0 150px;
-    padding: var(--size-padding-10px);
+    padding: var(--size-padding-15px);
     border-radius: 8px;
+
+    width: 200px;
+    min-height: 250px;
+
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    position: relative;
+
     transition: transform 0.2s;
 }
 
+.card-producto:hover{
+    transform: scale(1.05);
+}
+
+
 .card-producto.selected{
     background-color:var(--colorBotones);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
+/* =====Texto dentro de las tarjeta de productos===== */
+.info-producto {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.prod-nombre{
+    color: #102547;
+    font-size: var(--font-size-p2);
+    margin-bottom: var(--margin-button-5px);
+    display: block;
+
+}
+
+.prod-tipo{
+    display: inline-block;
+    color: #3d0476;
+    padding: 2px 10px;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.prod-precio{
+    font-size: var(--font-size-title-h2);
+    font-weight: bold;
+}
+
+
 /* =====FOOTER===== */
 footer{
     height: 150px;
@@ -326,4 +394,9 @@ footer{
     background-color: var(--colorSecundario-escena);
     border: 5px solid var(--colorTitulos-h1);
     aspect-ratio: 1 / 1;
+    transition: transform 0.2s;
+}
+
+.inventory-slot:hover{
+    transform: scale(1.05);
 }
