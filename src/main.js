@@ -200,6 +200,15 @@ function escena3() {
 
         btnAñadir.addEventListener("click", () => {
             if (!seleccionados.includes(producto)) {
+                //Validacion si hay dinero suficiente para comprar el producto
+                const costeTotal = seleccionados.reduce((total, p) => total + p.precio, 0);
+
+                if(jugador.dinero - (costeTotal + producto.precio) < 0) {
+                    alert("¡No tiene sufiente dinero para añadir este producto!");
+                    return;
+                }
+
+                //Si hay dinero se añade
                 if(seleccionados.length >= 6){
                     alert("Tu carrito esta lleno!");
                     return;
@@ -216,6 +225,7 @@ function escena3() {
             }
 
             mostrarSeleccionados();
+            actualizarMonedero();
         });
 
         card.appendChild(img);
@@ -249,6 +259,18 @@ function escena3() {
 
     }
 
+    //Funcion para ver el dinero restante en la bolsa
+    function actualizarMonedero(){
+        const costeCesta = seleccionados.reduce((total, p) => total + p.precio, 0);
+        const dineroProvisional = jugador.dinero - costeCesta;
+
+        //Mostramos cuanto dinero queda en la bolsa
+        document.getElementById("dinero-actual").textContent = dineroProvisional;
+
+    }
+
+
+    //Boton comprar y pasar a la siguiente escena
     const btnComprar = document.createElement("button");
     btnComprar.id = "btn-comprar";
     btnComprar.textContent = "Comprar";
@@ -263,17 +285,33 @@ function escena3() {
             return;
         }
 
-        showScene("enemies");
-        escena4();
+        const costeTotal = seleccionados.reduce((total, p) => total + p.precio, 0);
+
+        if(confirm(`¿Realizar compra de ${costeTotal}?`)){
+            if(jugador.gastarDinero(costeTotal)){
+                seleccionados.forEach(item => jugador.añadirItem(item));
+
+                document.getElementById("dinero-actual").textContent = jugador.dinero;
+                showScene("enemies");
+                escena4();
+       
+
+            }else{
+                alert("No tienes suficiente dinero.");
+            }
+        }
+
+
+        
         
     })
 
 
 
-
-
-
 }
+
+
+
 
 function escena4(){
     const contenedor = document.getElementById("enemies-container");

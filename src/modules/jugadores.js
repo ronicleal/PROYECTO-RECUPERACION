@@ -7,8 +7,9 @@ export class Jugador{
     vida;
     ataqueBase;
     defensaBase;
+    dinero;
 
-    constructor(nombre, ataqueBase = 0, defensaBase = 0, vidaInicial = 100){
+    constructor(nombre, ataqueBase = 0, defensaBase = 0, vidaInicial = 100, dineroInicial = 500){
         this.nombre = nombre;
         this.avatar = './image/player.png';
         this.puntos = 0;
@@ -17,6 +18,7 @@ export class Jugador{
         this.defensaBase = defensaBase;
         this.vidaMax = vidaInicial;
         this.vida = this.vidaMax;
+        this.dinero = dineroInicial;
 
     }
 
@@ -26,6 +28,15 @@ export class Jugador{
 
     ganarPuntos(cantidad){
         this.puntos += cantidad
+    }
+
+    gastarDinero(cantidad){
+        if(this.dinero >= cantidad){
+            this.dinero -= cantidad;
+            return true;
+        }
+
+        return false;
     }
 
     get ataqueTotal(){
