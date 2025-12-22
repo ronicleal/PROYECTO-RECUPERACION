@@ -371,6 +371,8 @@ function escena5(){
     const contendor = document.getElementById("enemies");
     contendor.innerHTML ="";
 
+    
+
 }
 
 
