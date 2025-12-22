@@ -1,6 +1,7 @@
 import { Jugador } from "./modules/jugadores.js";
 import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
 import { showScene } from "./utils/utils.js";
+import { Enemigo, Jefe } from "./modules/enemigos.js";
 
 /*====VARIABLES GLOBALES====*/
 const REGEX_NOMBRE = /^[A-Z][a-zA-Z\s]{0,19}$/;
@@ -8,6 +9,7 @@ const PUNTOS_DISPONIBLES = 10;
 const VIDA_BASE = 100;
 let seleccionados = [];
 let jugador = null;
+let enemigos = [];
 
 function iniciarJuego() {
     escena1();
@@ -371,7 +373,61 @@ function escena5(){
     const contendor = document.getElementById("enemies");
     contendor.innerHTML ="";
 
+    enemigos = [
+        new Enemigo("Goblin", 5, 30),
+        new Enemigo("Orco Guerrero", 12, 50),
+        new Enemigo("Esqueleto", 8, 40),
+        new Jefe("Dragón Rojo", 20, 120, 1.2),
+    ];
+
+    const titulo = document.createElement("h2");
+    titulo.textContent = "Enemigos";
+    contendor.appendChild(titulo);
+
+    //Contenedor de enemigos
+    const listaEnemigos = document.createElement("div");
+    listaEnemigos.classList.add("lista-enemigos");
+
+    enemigos.forEach(enemigo => {
+        const card = document.createElement("div");
+        card.classList.add("card-enemigo");
+
+        const img = document.createElement("img");
+        img.src = obtenerImagen(enemigo.nombre);
+        img.alt = enemigo.nombre;
+
+        const info = document.createElement("p");
+        info.innerHTML = `
+        <strong>${enemigo.nombre}</strong><br>
+        ${enemigo.ataque} puntos de ataque
+        `;
+
+        card.appendChild(img);
+        card.appendChild(info);
+        listaEnemigos.appendChild(card);
+    });
+
+    contendor.appendChild(listaEnemigos);
+
+    //Boton para ir a la siguiente escena
+    const btnContinuarBatalla = document.createElement("button");
+    btnContinuarBatalla.id = "continuar-batalla";
+    btnContinuarBatalla.classList.add("continuar-batalla");
+    btnContinuarBatalla.textContent = "Continuar";
     
+    contendor.appendChild(btnContinuarBatalla);
+
+    btnContinuarBatalla.addEventListener("click", () => {
+        showScene("battle");
+        escena6();
+
+    });
+
+    
+}
+
+
+function escena6(){
 
 }
 

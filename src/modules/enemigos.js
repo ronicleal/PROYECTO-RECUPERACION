@@ -1,4 +1,4 @@
-export class Enemigo{
+export class Enemigo {
     nombre;
     ataque;
     vida;
