@@ -446,3 +446,41 @@ footer{
     height: 120px;
     object-fit: contain;
 }
+
+/* =====AREA BATALLA DE JUGADOR Y ENEMIGOS===== */
+.battle-area{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: var(--size-paddig-20px);
+    overflow: hidden;
+}
+
+.battle-card{
+    background: white;
+    padding: var(--size-paddig-20px);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-in;
+}
+
+.battle-card.player{
+    transform: translateX(-100vw);
+}
+
+.battle-card.enemy{
+    transform: translateX(100vw);
+}
+
+.battle-card.animate-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.battle-card img{
+    width: 120px;
+    height: 120px;
+}
+

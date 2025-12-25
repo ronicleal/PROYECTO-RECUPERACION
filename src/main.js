@@ -2,6 +2,7 @@ import { Jugador } from "./modules/jugadores.js";
 import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
 import { showScene } from "./utils/utils.js";
 import { Enemigo, Jefe } from "./modules/enemigos.js";
+import { batalla } from "./modules/ranking.js";
 
 /*====VARIABLES GLOBALES====*/
 const REGEX_NOMBRE = /^[A-Z][a-zA-Z\s]{0,19}$/;
@@ -428,7 +429,114 @@ function escena5(){
 
 
 function escena6(){
-    
+    const contenedor = document.getElementById("battle");
+    contenedor.innerHTML = "";
+
+    //El jugador comienza la batalla con su vida máxima
+    jugador.vida = jugador.vidaTotal;
+
+    //Definimos los oponentes
+    const listaEnemigos = [
+        new Enemigo("Goblin", 5, 30),
+        new Enemigo("Orco Guerrero", 12, 50),
+        new Enemigo("Esqueleto", 8, 40),
+        new Jefe("Dragón Rojo", 20, 120, 1.2),
+    ];
+
+    let indiceActual = 0;
+
+    //Funcion para procesar cada combate
+    function procesarSiguienteCombate(){
+        contenedor.innerHTML = "";
+        const enemigo = listaEnemigos[indiceActual];
+
+        // Ejecucion de la logica del combate
+        // Utilizamos la funcion batalla del ranking
+        const resultado = batalla(jugador, enemigo);
+        const gano = resultado.ganador === jugador.nombre;
+
+        const titulo = document.createElement("h2");
+        titulo.textContent = "Combates"
+        contenedor.appendChild(titulo);
+
+        const area = document.createElement("div");
+        area.classList.add("battle-area");
+
+        area.innerHTML= `
+            <div class="battle-card player ${gano ? 'ganar' : 'perder'}">
+                <p>${jugador.nombre}</p>
+                <img src="./image/player.png" style="width:120px">
+                <p>♥️Vida restante: ${jugador.vida}</p>
+                <p>⚔️Ataque total: ${jugador.ataqueTotal}</p>
+            </div>
+
+            <h2>VS</h2>
+
+            <div class="battle-card enemy">
+                <p>${enemigo.nombre}</p>
+                <img src="${obtenerImagen(enemigo.nombre)}">
+                <p>♥️Vida: ${enemigo.vida}</p>
+                <p>⚔️Ataque: ${enemigo.ataque}</p>
+
+            
+        `
+        contenedor.appendChild(area);
+
+        //Animacion de movimiento de las tarjetas
+        const cards = area.querySelectorAll('.battle-card');
+        setTimeout(() => {
+            cards.forEach(card => card.classList.add("animate-in"));
+        }, 20);
+
+
+        //Panel de puntos conseguidos
+        const infoPuntos = document.createElement("div");
+        infoPuntos.className = "mensaje-batalla";
+        infoPuntos.innerHTML = `
+            <p>${gano ? 'Ganador' : 'Derrotado'} : ${jugador.nombre}</p>
+            <p>Puntos Ganados: ${jugador.puntos}</p>
+
+        
+        `
+        contenedor.appendChild(infoPuntos);
+
+        //Boton para continuar
+        const btnContinuar = document.createElement("button");
+        btnContinuar.className = "continuar-mercado";
+        
+        if(!gano){
+            btnContinuar.textContent = "Continuar";
+            btnContinuar.addEventListener("click", () => {
+                showScene("final");
+                escena7(false);
+            });
+        }else if(indiceActual < listaEnemigos.length -1){
+            btnContinuar.textContent = "Continuar";
+            btnContinuar.addEventListener("click", () =>{
+                indiceActual++
+                procesarSiguienteCombate();
+            });
+        }else{
+            btnContinuar.textContent = "Continuar";
+            btnContinuar.addEventListener("click", () => {
+                showScene("final");
+                escena7(true);
+            });
+        }
+
+        contenedor.appendChild(btnContinuar);
+
+
+
+
+    }
+
+    procesarSiguienteCombate();
+}
+
+
+function escena7(){
+
 }
 
 

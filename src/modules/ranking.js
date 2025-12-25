@@ -9,13 +9,20 @@ export function batalla(jugador, enemigo){
     //Los dos se atacan hasta que uno quede sin vida
     while(vidaJugador > 0 && vidaEnemigo > 0){
         //Turno 1: Jugador ataca
-        vidaEnemigo -= ataqueJugadorTotal;
+        vidaEnemigo = vidaEnemigo - jugador.ataqueTotal;
 
         if(vidaEnemigo <= 0) break;
 
         //Turno 2: Enemigo ataca
-        const vidaProxima = vidaJugador + jugador.defensaTotal - ataqueEnemigo;
-        vidaJugador = Math.max(0, vidaProxima);
+        let nuevaVida = (vidaJugador + jugador.defensaTotal) - enemigo.ataque;
+
+        if(nuevaVida > vidaJugador){
+            vidaJugador = vidaJugador - 1;
+        }else{
+            vidaJugador = nuevaVida;
+        }
+
+        if(vidaJugador < 0) vidaJugador = 0;
 
     }
 
