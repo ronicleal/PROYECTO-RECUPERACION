@@ -428,7 +428,7 @@ function escena5(){
 
 
 function escena6(){
-
+    
 }
 
 
