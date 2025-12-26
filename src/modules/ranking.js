@@ -1,3 +1,4 @@
+import { groupBy } from "../utils/utils.js";
 
 export function batalla(jugador, enemigo){
     let vidaJugador = jugador.vida;
@@ -45,4 +46,10 @@ export function batalla(jugador, enemigo){
     };
 
 
+}
+
+
+
+export function agruparPorNivel(jugadores, umbral = 300){
+    return groupBy(jugadores, jugador => (jugador.puntos >= umbral ? 'Veterano' : 'Novato'));
 }

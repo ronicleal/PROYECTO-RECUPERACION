@@ -2,7 +2,7 @@ import { Jugador } from "./modules/jugadores.js";
 import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
 import { showScene } from "./utils/utils.js";
 import { Enemigo, Jefe } from "./modules/enemigos.js";
-import { batalla } from "./modules/ranking.js";
+import { agruparPorNivel, batalla } from "./modules/ranking.js";
 
 /*====VARIABLES GLOBALES====*/
 const REGEX_NOMBRE = /^[A-Z][a-zA-Z\s]{0,19}$/;
@@ -536,7 +536,42 @@ function escena6(){
 
 
 function escena7(){
+    const contenedor = document.getElementById("final");
+    contenedor.innerHTML = "";
 
+    const titulo = document.createElement("h2");
+    titulo.textContent = "Resultado final";
+
+    contenedor.appendChild(titulo);
+
+    //Agrupamos por nivel
+    const grupos = agruparPorNivel([jugador], 300);
+
+    //Contenedor para el texto
+    const infoFinal = document.createElement("div");
+    infoFinal.classList.add("info-final-container");
+
+    //Creamos el párrafo el ranking
+    const ranking = document.createElement("p");
+    ranking.classList.add("final-text");
+
+    //Utilizamos la agrupación para definir el nivel
+    if(grupos.Veterano?.length){
+        ranking.innerHTML = `
+        El jugador <strong>${jugador.nombre}</strong> ha logrado ser un: <br>
+        <span class="rango-badge veterano">🥇 Veterano</span> <br>
+        Puntos totales: <strong>${jugador.puntos}</strong>
+        `;
+
+    }else{
+        ranking.innerHTML = `
+        El jugador <strong>${jugador.nombre}</strong> es un: <br>
+        <span class="rango-badge novato">👎 Novato</span> <br> 
+        `;
+    }
+
+    infoFinal.appendChild(ranking)
+    contenedor.appendChild(infoFinal);
 }
 
 
