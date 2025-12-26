@@ -1,6 +1,7 @@
 import { Jugador } from "./modules/jugadores.js";
 import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
 import { showScene } from "./utils/utils.js";
+import { obtenerImagen } from "./utils/utils.js";
 import { Enemigo, Jefe } from "./modules/enemigos.js";
 import { agruparPorNivel, batalla } from "./modules/ranking.js";
 
@@ -600,24 +601,3 @@ function escena8(){
 
 iniciarJuego();
 
-function obtenerImagen(nombre) {
-    const imagenes = {
-        "Espada corta": "./image/espada.png",
-        "Arco de caza": "./image/b_t_01.png",
-        "Armadura de cuero": "./image/armor.png",
-        "Poción pequeña": "./image/hp.png",
-        "Espada rúnica": "./image/espada_runica.png",
-        "Escudo de roble": "./image/shield.png",
-        "Poción grande": "./image/pocion_grande.png",
-        "Mandoble épico": "./image/mandoble.png",
-        "Placas dracónicas": "./image/placas_draconicas.png",
-        "Elixir legendario": "./image/elixir_legendario.png",
-        "Goblin": "./image/goblin.png",
-        "Orco Guerrero": "./image/orco.png",
-        "Esqueleto": "./image/esqueleto.png",
-        "Dragón Rojo": "./image/dragon.png",
-    };
-
-    // Si no existe imagen, usa una genérica
-    return imagenes[nombre] || "./image/default.png";
-}

@@ -47,3 +47,32 @@ export function showScene(id) {
   );
   document.getElementById(id).classList.add('active');
 }
+
+
+/**
+ * Función de utilidad para mapear el nombre de un ítem o enemigo a la ruta de su imagen.
+ * @function obtenerImagen
+ * @param {string} nombre - El nombre del ítem o enemigo.
+ * @returns {string} La ruta del archivo de imagen correspondiente, o una ruta por defecto si no se encuentra.
+ */
+export function obtenerImagen(nombre) {
+    const imagenes = {
+        "Espada corta": "./image/espada.png",
+        "Arco de caza": "./image/b_t_01.png",
+        "Armadura de cuero": "./image/armor.png",
+        "Poción pequeña": "./image/hp.png",
+        "Espada rúnica": "./image/espada_runica.png",
+        "Escudo de roble": "./image/shield.png",
+        "Poción grande": "./image/pocion_grande.png",
+        "Mandoble épico": "./image/mandoble.png",
+        "Placas dracónicas": "./image/placas_draconicas.png",
+        "Elixir legendario": "./image/elixir_legendario.png",
+        "Goblin": "./image/goblin.png",
+        "Orco Guerrero": "./image/orco.png",
+        "Esqueleto": "./image/esqueleto.png",
+        "Dragón Rojo": "./image/dragon.png",
+    };
+
+    // Si no existe imagen, usa una genérica
+    return imagenes[nombre] || "./image/default.png";
+}
