@@ -539,6 +539,10 @@ function escena7(){
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";
 
+    //Sumar monedas restantes a los puntos totales
+    const monedasExtras = jugador.dinero;
+    jugador.puntos += monedasExtras;
+
     const titulo = document.createElement("h2");
     titulo.textContent = "Resultado final";
 
@@ -562,7 +566,11 @@ function escena7(){
         <span class="rango-badge veterano">🥇 Veterano</span> <br>
         Puntos totales: <strong>${jugador.puntos}</strong>
         `;
-
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
     }else{
         ranking.innerHTML = `
         El jugador <strong>${jugador.nombre}</strong> es un: <br>
@@ -572,9 +580,23 @@ function escena7(){
 
     infoFinal.appendChild(ranking)
     contenedor.appendChild(infoFinal);
+
+    //Botón continuar a tabla de clasificación
+    const btnContinuarTabla = document.createElement("button");
+    btnContinuarTabla.className = "continuar-mercado";
+    btnContinuarTabla.textContent = "Ver Clasificación"
+    btnContinuarTabla.addEventListener("click", () => {
+        showScene("final");
+        escena8();
+    });
+
+    contenedor.appendChild(btnContinuarTabla);
 }
 
-
+function escena8(){
+    const contenedor = document.getElementById("final");
+    contenedor.innerHTML = "";
+}
 
 iniciarJuego();
 

@@ -4,9 +4,6 @@ export function batalla(jugador, enemigo){
     let vidaJugador = jugador.vida;
     let vidaEnemigo = enemigo.vida;
 
-    const ataqueJugadorTotal = jugador.ataqueTotal;
-    const ataqueEnemigo = enemigo.ataque;
-
     //Los dos se atacan hasta que uno quede sin vida
     while(vidaJugador > 0 && vidaEnemigo > 0){
         //Turno 1: Jugador ataca
@@ -30,11 +27,15 @@ export function batalla(jugador, enemigo){
     //Comprobar si el jugador ganó
     const ganoJugador = vidaJugador > 0 && vidaEnemigo <= 0;
     let puntosGanados = 0;
+    let dineroExtra = 0;
 
     if(ganoJugador) {
        puntosGanados = enemigo.calcularPuntosDerrota();
-
        jugador.ganarPuntos(puntosGanados);
+
+       //Dinero Extra 5 para normales y 10 para jefe
+       dineroExtra = (enemigo.tipo === 'jefe') ? 10 : 5;
+       jugador.dinero += dineroExtra;
 
     }
 
@@ -43,6 +44,7 @@ export function batalla(jugador, enemigo){
     return {
         ganador: ganoJugador ? jugador.nombre : enemigo.nombre, 
         puntosGanados,
+        dineroExtra
     };
 
 

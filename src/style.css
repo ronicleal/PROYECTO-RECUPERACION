@@ -494,13 +494,13 @@ footer{
     flex-direction: column;
     align-items: center; 
     justify-content: flex-start;
-    min-height: 50vh;
-    padding-top: 50px;
+    /* min-height: 80vh; */
+    /* padding-top: 50px; */
     text-align: center;
 }
 
 .info-final-container{
-    margin-top: 80px;
+    margin-top: 70px;
     padding: var(--size-padding-30px);
     width: 80%;
     max-width: 600px;
@@ -530,4 +530,4 @@ footer{
 .novato{
     background-color: #757575;
     color: white;
-}
+} 
