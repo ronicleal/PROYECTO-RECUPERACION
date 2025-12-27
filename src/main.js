@@ -549,6 +549,19 @@ function escena7(){
     const monedasExtras = jugador.dinero;
     jugador.puntos += monedasExtras;
 
+    //Guardar en LocalStorage
+    const nuevoRegistro = {
+        nombre: jugador.nombre,
+        puntos: jugador.puntos,
+        dinero : monedasExtras
+    };
+
+    //Obtenemos los datos previos del LocalStorage o un array vacio si no hay nada
+    let historial = JSON.parse(localStorage.getItem("registroJuego")) || [];
+    historial.push(nuevoRegistro);
+    localStorage.setItem("registroJuego", JSON.stringify(historial));
+
+    
     const titulo = document.createElement("h2");
     titulo.textContent = "Resultado final";
 
