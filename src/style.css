@@ -531,3 +531,32 @@ footer{
     background-color: #757575;
     color: white;
 } 
+
+/* =====ANIMACION DE LAS MONEDAS AL GANAR===== */
+.moneda-animada{
+    position: fixed;
+    top: -100px;
+    width: 60px;
+    z-index: 9999;
+    pointer-events: none;
+    height: 60px;
+    animation: bajarYRotar 1s linear forwards;
+}
+
+@keyframes bajarYRotar {
+    0% {
+        top: -100px;
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 50%;
+        transform: rotateY(360deg);
+        opacity: 0;
+    }
+}

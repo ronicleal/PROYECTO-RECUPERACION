@@ -76,3 +76,21 @@ export function obtenerImagen(nombre) {
     // Si no existe imagen, usa una genérica
     return imagenes[nombre] || "./image/default.png";
 }
+
+
+export function animacionMonedas(){
+  const monedas = `
+    <img src="./image/moneda.png" alt="moneda" class="moneda-animada" style="left: 25%;">
+    <img src="./image/moneda.png" alt="moneda" class="moneda-animada" style="left: 50%;">
+    <img src="./image/moneda.png" alt="moneda" class="moneda-animada" style="left: 75%;">
+  `
+  //Insertamos al final del body
+  document.body.insertAdjacentHTML('beforeend', monedas);
+
+  //Eliminamos los elementos del DOM después de que termine la animación 3s
+  setTimeout(() => {
+    const elementos = document.querySelectorAll('.moneda-animada');
+    elementos.forEach(el => el.remove());
+  }, 3500);
+
+}

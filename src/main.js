@@ -1,6 +1,6 @@
 import { Jugador } from "./modules/jugadores.js";
 import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
-import { showScene } from "./utils/utils.js";
+import { animacionMonedas, showScene } from "./utils/utils.js";
 import { obtenerImagen } from "./utils/utils.js";
 import { Enemigo, Jefe } from "./modules/enemigos.js";
 import { agruparPorNivel, batalla } from "./modules/ranking.js";
@@ -455,6 +455,11 @@ function escena6(){
         // Utilizamos la funcion batalla del ranking
         const resultado = batalla(jugador, enemigo);
         const gano = resultado.ganador === jugador.nombre;
+
+        if (gano){
+            animacionMonedas(); //Se disparan las monedas si gana
+        }
+
 
         const titulo = document.createElement("h2");
         titulo.textContent = "Combates"
