@@ -23,8 +23,6 @@ function escena1() {
     const inputs = document.querySelectorAll('.formulario-crear-jugador input[type="number"]');
     document.getElementById("imagen-jugador").style.display = "none";
 
-    // //Quitamos la imagen del jugador
-    // controlarImagenJugador(false);
 
     //Funcion de actualizacion visual y calculo de puntos
     function validarYactualizarPuntos(e) {
@@ -108,10 +106,6 @@ function escena2() {
     document.getElementById("titulo-crear-jugador").style.display = "none";
     document.getElementById("imagen-jugador").style.display = "block";
 
-    // //Mostramos la imagen del jugador
-    // controlarImagenJugador(true);
-    
-    
 
     //Mostrar el nombre en el HTML
     document.getElementById("nombre-jugador-display").textContent = jugador.nombre;
@@ -171,25 +165,6 @@ function escena3() {
     // 4. Aplicar el descuento solo a los productos de esa rareza
     const mercadoDescontado = aplicarDescuentoPorRareza(rarezaDescontada, descuentoAleatorio);
 
-    //=== Notificación del descuento ===
-
-    // // 1. Contenedor de notificacion del descuento en los productos
-    // let notifArea = document.getElementById("notificacion-mercado");
-    // if (!notifArea) {
-    //     notifArea = document.createElement("div");
-    //     notifArea.id = "notificacion-mercado";
-    //     //Insertar la notificacion antes del contendor de productos
-    //     container.parentNode.insertBefore(notifArea, container);
-    // }
-    // notifArea.innerHTML = ""; //Limpiar notificaciones anteriores
-
-    // // 2. Crear el elemento de notificacion
-    // const notificacionDescuento = document.createElement("p");
-    // notificacionDescuento.classList.add("descuento-notificacion");
-    // // 3. Asignar el contenido dinámico
-    // notificacionDescuento.textContent = `🚨 ¡OFERTA! Descuento del 📢${descuentoAleatorio}%🎉 aplicado a ítems de rareza: ${rarezaDescontada.toUpperCase()} 🚨`;
-    // // 4. Insertar la notificación a su nuevo contenedor
-    // notifArea.appendChild(notificacionDescuento);
 
     //=== Mostrar productos en tarjetas ===
 
@@ -332,9 +307,6 @@ function escena4(){
     const titulo = document.createElement("h2");
     titulo.textContent = "Estado Actual del Jugador";
 
-    // //Mostramos la imagen del jugador
-    // controlarImagenJugador(true);
-    
     
     const nombreJugador = document.createElement("p");
     nombreJugador.classList.add("nombre-jugador-escena4")
@@ -555,6 +527,8 @@ function escena6(){
 }
 
 
+
+
 function escena7(){
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";
@@ -625,6 +599,9 @@ function escena7(){
 
     contenedor.appendChild(btnContinuarTabla);
 }
+
+
+
 
 function escena8(){
     const contenedor = document.getElementById("final");

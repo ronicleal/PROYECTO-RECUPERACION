@@ -311,15 +311,6 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 }
 
-/* =====Notificacion de descuento aleatorio===== */
-.descuento-notificacion{
-    text-align: center;
-    font-size: var(--font-size-p);
-    color: var(--colorTitulos-h1);
-    padding: var(--size-padding-10px);
-    margin-bottom: var(--margin-button-20px);
-    background-color: #e3c7ff;
-}
 
 /* =====Tartejas Mercado de productos===== */
 #market-container{
@@ -355,7 +346,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 
 .card-producto.selected{
-    background-color:var(--colorBotones);
+    background-color:gold;
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
@@ -503,8 +494,6 @@ footer{
     flex-direction: column;
     align-items: center; 
     justify-content: flex-start;
-    /* min-height: 80vh; */
-    /* padding-top: 50px; */
     text-align: center;
 }
 
@@ -617,6 +606,12 @@ footer{
 @media screen and (max-width: 768px){
     main{
         width: 95%;
+        height: auto;
+    }
+
+    #monedero-container{
+        width: 80px;
+        left: 10px;
     }
 
     .stat-box-final{
@@ -624,10 +619,11 @@ footer{
         font-size: 0.9rem;
     }
 
-    #inventory-container {
-        gap: 5px;
+    .scene1-container {
+        padding: 0 20px;
     }
     
+
 
 }
 
@@ -639,15 +635,55 @@ footer{
         overflow-y: auto; 
     }
 
-    .stat-row {
+    #monedero-container{
+        width: 60px;
+        left: 5px;
+        padding: 5px;
+        bottom: 180px;
+    }
+
+    #dinero-actual {
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+
+    .scene1-container {
+        flex-direction: column;
+        max-height: none;
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .scene1-container img {
+        width: 100px;
+    }
+
+    .nombre-jugador {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+   .stat-row {
         flex-direction: column;
         align-items: center;
         gap: 10px;
     }
 
     .stat-box-final {
-        width: 150%;
+        width: 90%;
         height: 60px;
+    }
+
+    #inventory-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        height: auto;
+    }
+
+    .inventory-slot {
+        width: 55px;
+        height: 55px;
     }
 
     .card-producto {
@@ -660,16 +696,9 @@ footer{
         padding: 15px 5px;
     }
 
-    #inventory-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5px;
-    }
+    
 
-    .inventory-slot {
-        width: 50px;
-        height: 50px;
-    }
+    
 
     #monedero-container {
         width: 60px;
