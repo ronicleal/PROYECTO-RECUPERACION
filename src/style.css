@@ -59,7 +59,7 @@ body{
     display: flex;
     flex-direction: column; 
     height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
     margin: 0;
     padding: 0;
 }
@@ -81,11 +81,11 @@ h2, h3{
 
 
 .nombre-jugador{
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    text-align: right;
+    flex-grow: 1;
+    margin: 0;
     font-weight: bold;
-    font-size:x-large;
+    font-size: var(--font-size-p3);
     color: var(--colorTitulos-h1);
 }
 
@@ -106,6 +106,7 @@ main{
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
+    height: 75vh;
     
 }
 
@@ -122,6 +123,22 @@ main{
 .scene.active{
     display: flex;
 }
+
+.scene1-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-height: 120px;
+    padding: 0 40px;
+    margin-bottom: 0;
+}
+
+.scene1-container img{
+    width: 130px;
+    height: auto;
+}
+
 
 /* =============FORMULARIO ============= */
 
@@ -159,15 +176,6 @@ main{
 
 /* ==============IMAGENES ================ */
 
-/* imagen jugador*/
-.img-container img{
-    width: 250px;
-    position:absolute;
-    left: 1px;
-    top: 60px;
-    
-}
-
 /*Imagenes productos */
 .card-producto img{
     width: 80px;
@@ -180,10 +188,10 @@ main{
 /*Imagen Monedero */
 #monedero-container {
     position: fixed;
-    left: 2vw; /* 2% del ancho */
-    bottom: 1vh; /* 1% del alto */
+    left: 2vw; 
+    bottom: 1vh; 
     width: 100px;
-    z-index: 100; /* Por encima de todo */
+    z-index: 100; 
 
     display: flex;
     align-items: center;
@@ -276,7 +284,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     flex-direction: column;
     align-items: center; 
     gap: 15px;           
-    margin-top: var(--margin-top-30px);
+    margin-top: 5px;
 
 }
 
@@ -338,6 +346,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     position: relative;
 
     transition: transform 0.2s;
+    
 }
 
 .card-producto:hover{
@@ -558,5 +567,126 @@ footer{
         top: 50%;
         transform: rotateY(360deg);
         opacity: 0;
+    }
+}
+
+
+/* =====TABLA RANKING FINAL===== */
+.tabla-ranking {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 50%;
+    max-width: 600px;
+}
+
+.tabla-ranking th{
+    padding: 12px;
+    color: #102547;
+    border: 1px solid #102547;
+    background-color:#f9a825;
+}
+
+.tabla-ranking td{
+    padding: var(--size-padding-10px);
+    border: 1px solid #102547;
+    text-align: center;
+    background-color:white;
+}
+
+.tabla-ranking tr:nth-child(even) {
+    background-color: var(--colorSecundario-escena);
+}
+
+/* =====BOTON MOSTRAR TABLA POR CONSOLA===== */
+.btn-consola {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+
+
+
+/*=======================================
+  DISEÑO RESPONSIVE : TABLETS (Max 768px)
+=========================================*/
+@media screen and (max-width: 768px){
+    main{
+        width: 95%;
+    }
+
+    .stat-box-final{
+        width: 45%;
+        font-size: 0.9rem;
+    }
+
+    #inventory-container {
+        gap: 5px;
+    }
+    
+
+}
+
+/*=======================================
+  DISEÑO RESPONSIVE: MÓVILES (Max 480px)
+=========================================*/
+@media screen and (max-width: 480px){
+    body {
+        overflow-y: auto; 
+    }
+
+    .stat-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .stat-box-final {
+        width: 150%;
+        height: 60px;
+    }
+
+    .card-producto {
+        flex: 1 1 140px;
+        min-height: 200px;
+    }
+
+    footer {
+        height: auto;
+        padding: 15px 5px;
+    }
+
+    #inventory-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+    }
+
+    .inventory-slot {
+        width: 50px;
+        height: 50px;
+    }
+
+    #monedero-container {
+        width: 60px;
+        bottom: 80px;
+    }
+
+    .info-final-container {
+        margin-top: 20px;
+        width: 95%;
+    }
+
+    .rango-badge {
+        font-size: 1.2rem;
+    }
+
+    .tabla-ranking {
+        width: 100%;
+        font-size: 0.8rem;
     }
 }

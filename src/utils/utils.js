@@ -94,3 +94,17 @@ export function animacionMonedas(){
   }, 3500);
 
 }
+
+// export function controlarImagenJugador(mostrar){
+//   const imgJugador = document.getElementById("jugador-visual-global");
+
+//   if(mostrar){
+//     imgJugador.classList.remove("jugador-hidden");
+//     imgJugador.classList.add("jugador-visible");
+
+//   }else{
+//     imgJugador.classList.remove("jugador-visible");
+//     imgJugador.classList.add("jugador-hidden");
+//   }
+
+// }

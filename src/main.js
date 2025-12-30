@@ -21,6 +21,10 @@ function iniciarJuego() {
 function escena1() {
     const btnCrear = document.getElementById("crear-jugador");
     const inputs = document.querySelectorAll('.formulario-crear-jugador input[type="number"]');
+    document.getElementById("imagen-jugador").style.display = "none";
+
+    // //Quitamos la imagen del jugador
+    // controlarImagenJugador(false);
 
     //Funcion de actualizacion visual y calculo de puntos
     function validarYactualizarPuntos(e) {
@@ -94,9 +98,6 @@ function escena1() {
     // Asegurar que se ejecuta la primera vez para setear los valores.
     validarYactualizarPuntos();
 
-    //Oculto la imagen al principio para que aparezca en la escena2
-    document.querySelector(".img-container").style.display = "none";
-
 }
 
 // ESCENA 2: Visualización del estado inicial
@@ -104,7 +105,12 @@ function escena2() {
     // Ocultamos el formulario y mostramos la tarjeta de estado
     document.querySelector(".container-formulario").style.display = "none";
     document.getElementById("crear-jugador").style.display = "none";
-    document.querySelector(".img-container").style.display = "block";
+    document.getElementById("titulo-crear-jugador").style.display = "none";
+    document.getElementById("imagen-jugador").style.display = "block";
+
+    // //Mostramos la imagen del jugador
+    // controlarImagenJugador(true);
+    
     
 
     //Mostrar el nombre en el HTML
@@ -153,6 +159,7 @@ function escena3() {
     const container = document.getElementById("market-container");
     container.innerHTML = "";
 
+
     //=== Lógica del descuento ===
 
     // 1. Obtener todas las rarezas únicas
@@ -166,23 +173,23 @@ function escena3() {
 
     //=== Notificación del descuento ===
 
-    // 1. Contenedor de notificacion del descuento en los productos
-    let notifArea = document.getElementById("notificacion-mercado");
-    if (!notifArea) {
-        notifArea = document.createElement("div");
-        notifArea.id = "notificacion-mercado";
-        //Insertar la notificacion antes del contendor de productos
-        container.parentNode.insertBefore(notifArea, container);
-    }
-    notifArea.innerHTML = ""; //Limpiar notificaciones anteriores
+    // // 1. Contenedor de notificacion del descuento en los productos
+    // let notifArea = document.getElementById("notificacion-mercado");
+    // if (!notifArea) {
+    //     notifArea = document.createElement("div");
+    //     notifArea.id = "notificacion-mercado";
+    //     //Insertar la notificacion antes del contendor de productos
+    //     container.parentNode.insertBefore(notifArea, container);
+    // }
+    // notifArea.innerHTML = ""; //Limpiar notificaciones anteriores
 
-    // 2. Crear el elemento de notificacion
-    const notificacionDescuento = document.createElement("p");
-    notificacionDescuento.classList.add("descuento-notificacion");
-    // 3. Asignar el contenido dinámico
-    notificacionDescuento.textContent = `🚨 ¡OFERTA! Descuento del 📢${descuentoAleatorio}%🎉 aplicado a ítems de rareza: ${rarezaDescontada.toUpperCase()} 🚨`;
-    // 4. Insertar la notificación a su nuevo contenedor
-    notifArea.appendChild(notificacionDescuento);
+    // // 2. Crear el elemento de notificacion
+    // const notificacionDescuento = document.createElement("p");
+    // notificacionDescuento.classList.add("descuento-notificacion");
+    // // 3. Asignar el contenido dinámico
+    // notificacionDescuento.textContent = `🚨 ¡OFERTA! Descuento del 📢${descuentoAleatorio}%🎉 aplicado a ítems de rareza: ${rarezaDescontada.toUpperCase()} 🚨`;
+    // // 4. Insertar la notificación a su nuevo contenedor
+    // notifArea.appendChild(notificacionDescuento);
 
     //=== Mostrar productos en tarjetas ===
 
@@ -324,6 +331,10 @@ function escena4(){
 
     const titulo = document.createElement("h2");
     titulo.textContent = "Estado Actual del Jugador";
+
+    // //Mostramos la imagen del jugador
+    // controlarImagenJugador(true);
+    
     
     const nombreJugador = document.createElement("p");
     nombreJugador.classList.add("nombre-jugador-escena4")
@@ -374,6 +385,9 @@ function escena4(){
 function escena5(){
     const contendor = document.getElementById("enemies");
     contendor.innerHTML ="";
+
+    // //Quitamos la imagen del jugador
+    // controlarImagenJugador(false);
 
     enemigos = [
         new Enemigo("Goblin", 5, 30),
@@ -561,7 +575,7 @@ function escena7(){
     historial.push(nuevoRegistro);
     localStorage.setItem("registroJuego", JSON.stringify(historial));
 
-    
+
     const titulo = document.createElement("h2");
     titulo.textContent = "Resultado final";
 
@@ -615,6 +629,68 @@ function escena7(){
 function escena8(){
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";
+
+    const titulo = document.createElement("h2");
+    titulo.textContent = "Ranking";
+    contenedor.appendChild(titulo);
+
+    //Recuperar datos del LocalStorage
+    const historial = JSON.parse(localStorage.getItem("registroJuego")) || [];
+
+    const tabla = document.createElement("table");
+    tabla.classList.add("tabla-ranking");
+
+    tabla.innerHTML = `
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Puntos</th>
+                <th>Dinero</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${historial.map(reg => `
+                <tr>
+                    <td>${reg.nombre}</td>
+                    <td>${reg.puntos}</td>
+                    <td>${reg.dinero}</td>
+                </tr>
+                
+            `).join('')}
+        </tbody>
+    
+    `;
+    
+    //Si no hay datos se muestra un mensaje
+    if(historial.length === 0){
+        tabla.innerHTML = "<tr><td colspan='3'>No hay registro aún</td></tr>";
+
+    }
+
+    contenedor.appendChild(tabla);
+
+    //Boton para mostrar por consola la tabla
+    const btnConsola = document.createElement("button");
+    btnConsola.textContent = "Ver Ranking Consola";
+    btnConsola.classList.add("btn-consola");
+    btnConsola.addEventListener("click", () => {
+        console.table(historial);
+    });
+    contenedor.appendChild(btnConsola);
+    
+
+    //Boton reiniciar
+    const btnReiniciar = document.createElement("button");
+    btnReiniciar.textContent = "Reiniciar";
+    btnReiniciar.classList.add("continuar-mercado");
+    btnReiniciar.addEventListener("click", ()=> {
+        location.reload();
+    });
+
+    contenedor.appendChild(btnReiniciar);
+
+
+
 }
 
 iniciarJuego();
