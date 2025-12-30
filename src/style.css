@@ -3,12 +3,12 @@
 ====================================*/
 :root{
 /*PALETA DE COLORES*/
---colorPrimario-fondo: #395fac;
---colorSecundario-escena : #b7f0f9;
---colorAcento : #e2e2e2;
---colorBotones: #0ffff8;
---colorTitulos-h2:white; 
---colorTitulos-h1:#102547;
+--colorPrimario-fondo: #240046;
+--colorSecundario-escena : #e0aaff;
+--colorAcento : #c77dff;
+--colorBotones: #00f5d4;
+--colorTitulos-h2:#ffffff; 
+--colorTitulos-h1:#10002b;;
 
 /*TIPOGRAFIA Y TAMAÑOS*/
 --font-family-primary: Arial, sans-serif;
@@ -67,6 +67,7 @@ body{
 
 h1 {
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     margin-bottom: var(--margin-button-10px);
     color: var(--colorTitulos-h2);
     font-size: var(--font-size-title-h1);
@@ -253,18 +254,19 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
    margin-left: auto;
    margin-right: auto;
    margin-bottom: var(--margin-button-20px);
+   
 }
 
 .boton-crear:hover, .continuar-mercado:hover,
 .btn-comprar:hover, .continuar-enemigos:hover,
 .continuar-batalla:hover {
-    background-color: var(--colorPrimario-fondo);
+    background-color: #ffffff;
 }
 
 .btn-añadir{
     position: absolute;
     bottom: 15px;
-    background-color: #0ffff8;
+    background-color: var(--colorBotones);
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
@@ -274,7 +276,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 .btn-añadir:hover{
-    background-color:var(--colorPrimario-fondo);
+    background-color:var(--colorSecundario-escena);
 }
 
 
@@ -346,7 +348,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 
 .card-producto.selected{
-    background-color:gold;
+    background-color:var(--colorAcento);
+    border: 3px solid var(--colorBotones);
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
@@ -566,18 +569,23 @@ footer{
     border-collapse: collapse;
     width: 50%;
     max-width: 600px;
+    background-color: rgba(16, 0, 43, 0.9);
+    box-shadow: 0 0 20px rgba(199, 125, 255, 0.3);
+    border: 1px solid rgba(16, 0, 43, 0.9);
 }
 
 .tabla-ranking th{
     padding: 12px;
-    color: #102547;
-    border: 1px solid #102547;
-    background-color:#f9a825;
+    color: var(--colorTitulos-h1);
+    border: 1px solid rgba(16, 0, 43, 0.9);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--colorBotones);
 }
 
 .tabla-ranking td{
     padding: var(--size-padding-10px);
-    border: 1px solid #102547;
+    border: 1px solid rgba(16, 0, 43, 0.9);
     text-align: center;
     background-color:white;
 }
@@ -588,13 +596,19 @@ footer{
 
 /* =====BOTON MOSTRAR TABLA POR CONSOLA===== */
 .btn-consola {
-    background-color: #28a745;
-    color: white;
+    background-color: var(--colorBotones);
+    color: black;
+    font-weight: bold;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-consola:hover{
+    background-color: #ffffff;
 }
 
 
@@ -640,6 +654,7 @@ footer{
         left: 5px;
         padding: 5px;
         bottom: 180px;
+        
     }
 
     #dinero-actual {

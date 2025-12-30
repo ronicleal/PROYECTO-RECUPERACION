@@ -358,14 +358,11 @@ function escena5(){
     const contendor = document.getElementById("enemies");
     contendor.innerHTML ="";
 
-    // //Quitamos la imagen del jugador
-    // controlarImagenJugador(false);
-
     enemigos = [
-        new Enemigo("Goblin", 5, 30),
-        new Enemigo("Orco Guerrero", 12, 50),
-        new Enemigo("Esqueleto", 8, 40),
-        new Jefe("Dragón Rojo", 20, 120, 1.2),
+        new Enemigo("Quilava", 5, 30),
+        new Enemigo("Raticate", 12, 50),
+        new Enemigo("Sneasel", 8, 40),
+        new Jefe("Pyroar", 20, 120, 1.2),
     ];
 
     const titulo = document.createElement("h2");
@@ -424,10 +421,10 @@ function escena6(){
 
     //Definimos los oponentes
     const listaEnemigos = [
-        new Enemigo("Goblin", 5, 30),
-        new Enemigo("Orco Guerrero", 12, 50),
-        new Enemigo("Esqueleto", 8, 40),
-        new Jefe("Dragón Rojo", 20, 120, 1.2),
+        new Enemigo("Quilava", 5, 30),
+        new Enemigo("Raticate", 12, 50),
+        new Enemigo("Sneasel", 8, 40),
+        new Jefe("Pyroar", 20, 120, 1.2),
     ];
 
     let indiceActual = 0;
@@ -457,7 +454,7 @@ function escena6(){
         area.innerHTML= `
             <div class="battle-card player ${gano ? 'ganar' : 'perder'}">
                 <p>${jugador.nombre}</p>
-                <img src="./image/player.png" style="width:120px">
+                <img src="./image/pikachu.png" style="width:120px">
                 <p>♥️Vida restante: ${jugador.vida}</p>
                 <p>⚔️Ataque total: ${jugador.ataqueTotal}</p>
             </div>

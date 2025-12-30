@@ -57,20 +57,20 @@ export function showScene(id) {
  */
 export function obtenerImagen(nombre) {
     const imagenes = {
-        "Espada corta": "./image/espada.png",
-        "Arco de caza": "./image/b_t_01.png",
-        "Armadura de cuero": "./image/armor.png",
-        "Poción pequeña": "./image/hp.png",
-        "Espada rúnica": "./image/espada_runica.png",
-        "Escudo de roble": "./image/shield.png",
-        "Poción grande": "./image/pocion_grande.png",
-        "Mandoble épico": "./image/mandoble.png",
-        "Placas dracónicas": "./image/placas_draconicas.png",
-        "Elixir legendario": "./image/elixir_legendario.png",
-        "Goblin": "./image/goblin.png",
-        "Orco Guerrero": "./image/orco.png",
-        "Esqueleto": "./image/esqueleto.png",
-        "Dragón Rojo": "./image/dragon.png",
+        "Baya Aranja": "./image/Bayas_Aranja.png",
+        "Superpoción": "./image/Super_pocion.png",
+        "Hiperpoción": "./image/Hiperpocion.png",
+        "Zinc": "./image/Zinc.png",
+        "Proteína": "./image/proteina.png",
+        "Placa Acero": "./image/placa_acero.png",
+        "Imán": "./image/iman.png",
+        "Bola Luminosa": "./image/bola_luminosa_.png",
+        "Piedra Trueno": "./image/piedra_trueno.png",
+        "Pokeball": "./image/pokebolla.png",
+        "Quilava": "./image/Quilava.png",
+        "Raticate": "./image/Raticate.png",
+        "Sneasel": "./image/Sneasel.png",
+        "Pyroar": "./image/Pyroar.png",
     };
 
     // Si no existe imagen, usa una genérica
@@ -94,17 +94,3 @@ export function animacionMonedas(){
   }, 3500);
 
 }
-
-// export function controlarImagenJugador(mostrar){
-//   const imgJugador = document.getElementById("jugador-visual-global");
-
-//   if(mostrar){
-//     imgJugador.classList.remove("jugador-hidden");
-//     imgJugador.classList.add("jugador-visible");
-
-//   }else{
-//     imgJugador.classList.remove("jugador-visible");
-//     imgJugador.classList.add("jugador-hidden");
-//   }
-
-// }
