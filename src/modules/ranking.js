@@ -1,5 +1,15 @@
 import { groupBy } from "../utils/utils.js";
 
+/**
+ * Ejecuta un combate automático por turnos entre el jugador y un enemigo.
+ * El combate continúa en un bucle hasta que la vida de uno de los dos llega a cero.
+ * @param {Jugador} jugador - Instancia del jugador con sus estadísticas y equipo.
+ * @param {Enemigo|Jefe} enemigo - Instancia del oponente (puede ser enemigo común o jefe).
+ * @returns {Object} Resultado del encuentro.
+ * @property {string} ganador - El nombre del personaje que sobrevivió al combate.
+ * @property {number} puntosGanados - Puntos de experiencia obtenidos (0 si el jugador pierde).
+ * @property {number} dineroExtra - Monedas ganadas (5 por enemigos, 10 por jefes; 0 si pierde).
+ */
 export function batalla(jugador, enemigo){
     let vidaJugador = jugador.vida;
     let vidaEnemigo = enemigo.vida;
@@ -51,7 +61,13 @@ export function batalla(jugador, enemigo){
 }
 
 
-
+/**
+ * Clasifica una lista de jugadores en dos categorías basadas en su puntuación.
+ * Utiliza una función de agrupación externa (groupBy).
+ * * @param {Jugador[]} jugadores - Array de instancias de jugadores a clasificar.
+ * @param {number} [umbral=300] - Puntos necesarios para ser considerado 'Veterano'.
+ * @returns {Object.<string, Jugador[]>} Objeto con las llaves 'Veterano' y 'Novato' que contienen arrays de jugadores.
+ */
 export function agruparPorNivel(jugadores, umbral = 300){
     return groupBy(jugadores, jugador => (jugador.puntos >= umbral ? 'Veterano' : 'Novato'));
 }

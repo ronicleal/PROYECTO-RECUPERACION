@@ -13,18 +13,29 @@ let seleccionados = [];
 let jugador = null;
 let enemigos = [];
 
+/**
+ * Punto de entrada del juego. Inicializa la primera escena.
+ */
 function iniciarJuego() {
     escena1();
 }
 
-// ESCENA 1: Formulario y lógica de puntos
+/**
+ * ESCENA 1: Configuración inicial del personaje.
+ * Gestiona el formulario de creación, la validación del nombre mediante RegEx
+ * y la distribución limitada de puntos de estadísticas (Ataque, Defensa, Vida).
+ */
 function escena1() {
     const btnCrear = document.getElementById("crear-jugador");
     const inputs = document.querySelectorAll('.formulario-crear-jugador input[type="number"]');
     document.getElementById("imagen-jugador").style.display = "none";
 
 
-    //Funcion de actualizacion visual y calculo de puntos
+    /**
+     * Valida en tiempo real que la suma de puntos no exceda el límite permitido.
+     * Actualiza la visualización de puntos restantes en el DOM.
+     * @param {Event} [e] - Evento de entrada del input.
+     */
     function validarYactualizarPuntos(e) {
         const ataqueInput = document.getElementById("ataque-input");
         const defensaInput = document.getElementById("defensa-input");
@@ -98,7 +109,14 @@ function escena1() {
 
 }
 
-// ESCENA 2: Visualización del estado inicial
+
+
+
+/**
+ * ESCENA 2: Visualización del estado inicial.
+ * Muestra la tarjeta de estadísticas finales del jugador tras la creación
+ * y permite avanzar hacia la escena del mercado.
+ */
 function escena2() {
     // Ocultamos el formulario y mostramos la tarjeta de estado
     document.querySelector(".container-formulario").style.display = "none";
@@ -147,7 +165,11 @@ function escena2() {
 
 
 
-
+/**
+ * ESCENA 3: Mercado de productos.
+ * Genera dinámicamente el catálogo de productos con un sistema de descuentos aleatorios.
+ * Permite seleccionar hasta 6 objetos, validando el saldo disponible del jugador.
+ */
 function escena3() {
     seleccionados = []; // Lista de productos seleccionados
     const container = document.getElementById("market-container");
@@ -221,6 +243,9 @@ function escena3() {
         container.appendChild(card);
     });
 
+    /**
+     * Actualiza visualmente los slots del inventario en el footer.
+     */
     function mostrarSeleccionados(){
         //1. Obtengo todos los slot del inventario
         const slots = document.querySelectorAll(".inventory-slot");
@@ -246,7 +271,9 @@ function escena3() {
 
     }
 
-    //Funcion para ver el dinero restante en la bolsa
+    /**
+     * Calcula y muestra el saldo provisional restando el coste de la cesta actual.
+     */
     function actualizarMonedero(){
         const costeCesta = seleccionados.reduce((total, p) => total + p.precio, 0);
         const dineroProvisional = jugador.dinero - costeCesta;
@@ -299,7 +326,11 @@ function escena3() {
 
 
 
-
+/**
+ * ESCENA 4: Preparación para el combate.
+ * Muestra el estado actualizado del jugador con los bonos de los objetos comprados
+ * (Ataque total, Defensa total y Vida máxima con consumibles).
+ */
 function escena4(){
     const contenedor = document.getElementById("enemies-container");
     contenedor.innerHTML = "";
@@ -349,11 +380,15 @@ function escena4(){
         escena5();
     });
 
-
-
-
 }
 
+
+
+/**
+ * ESCENA 5: Galería de villanos.
+ * Presenta a los oponentes y al jefe final (Pyroar), mostrando sus estadísticas 
+ * antes de iniciar la secuencia de batallas.
+ */
 function escena5(){
     const contendor = document.getElementById("enemies");
     contendor.innerHTML ="";
@@ -412,6 +447,12 @@ function escena5(){
 }
 
 
+/**
+ * ESCENA 6: Secuencia de combate.
+ * Gestiona el enfrentamiento sucesivo contra la lista de enemigos.
+ * Ejecuta animaciones visuales de monedas al ganar y controla la transición 
+ * al resultado final o derrota.
+ */
 function escena6(){
     const contenedor = document.getElementById("battle");
     contenedor.innerHTML = "";
@@ -429,7 +470,9 @@ function escena6(){
 
     let indiceActual = 0;
 
-    //Funcion para procesar cada combate
+    /**
+     * Procesa recursivamente el siguiente oponente en la lista.
+     */
     function procesarSiguienteCombate(){
         contenedor.innerHTML = "";
         const enemigo = listaEnemigos[indiceActual];
@@ -525,7 +568,11 @@ function escena6(){
 
 
 
-
+/**
+ * ESCENA 7: Evaluación de resultados.
+ * Calcula la puntuación final sumando el dinero restante, clasifica al jugador
+ * como 'Veterano' o 'Novato' y guarda el registro en LocalStorage.
+ */
 function escena7(){
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";
@@ -599,7 +646,11 @@ function escena7(){
 
 
 
-
+/**
+ * ESCENA 8: Ranking histórico.
+ * Recupera el historial de partidas de LocalStorage y genera una tabla comparativa.
+ * Ofrece opciones para ver los datos por consola o reiniciar la aplicación.
+ */
 function escena8(){
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";

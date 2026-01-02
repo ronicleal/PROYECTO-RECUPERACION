@@ -78,6 +78,14 @@ export function obtenerImagen(nombre) {
 }
 
 
+/**
+ * Ejecuta una animación visual de monedas cayendo en la pantalla.
+ * * Genera tres elementos de imagen en posiciones horizontales fijas (25%, 50%, 75%),
+ * los inserta en el DOM y activa la animación CSS definida en la clase 'moneda-animada'.
+ * * @function animacionMonedas
+ * @description Crea un efecto visual de recompensa. Incluye una limpieza automática 
+ * de los elementos del DOM tras 3.5 segundos para optimizar el rendimiento.
+ */
 export function animacionMonedas(){
   const monedas = `
     <img src="./image/moneda.png" alt="moneda" class="moneda-animada" style="left: 25%;">
