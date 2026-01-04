@@ -3,12 +3,13 @@
 ====================================*/
 :root{
 /*PALETA DE COLORES*/
---colorPrimario-fondo: #240046;
---colorSecundario-escena : #e0aaff;
---colorAcento : #c77dff;
---colorBotones: #00f5d4;
---colorTitulos-h2:#ffffff; 
---colorTitulos-h1:#10002b;;
+--colorPrimario-fondo: #000814;
+--colorSecundario-escena : #daba86;
+--colorAcento : rgb(208, 64, 38);
+--colorBotones: #ffc300;
+--colorFooter: #5d4013;
+--colorTitulos-h1:#000000;
+--colorTitulos-h2: #ffffff;
 
 /*TIPOGRAFIA Y TAMAÑOS*/
 --font-family-primary: Arial, sans-serif;
@@ -54,22 +55,29 @@
     font-family: var(--font-family-primary);
 }
 
+header{
+    background-color: #ffffff;
+    border-bottom: 3px solid var(--colorBotones);
+    
+}
+
 body{
-    background-color: var(--colorPrimario-fondo);
     display: flex;
     flex-direction: column; 
     height: 100vh;
     overflow-y: auto;
     margin: 0;
     padding: 0;
+
+    
+    
 }
 
 
 h1 {
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     margin-bottom: var(--margin-button-10px);
-    color: var(--colorTitulos-h2);
+    color: var(--colorPrimario-fondo);
     font-size: var(--font-size-title-h1);
     margin-top: 10px;
 }
@@ -104,21 +112,28 @@ main{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    width: 90%;
-    max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
     height: 75vh;
+
+    
+    background-image: url('image/fondo16.png');
+    background-repeat: repeat;
+    background-size: 16px 16px;
+    
+    
     
 }
 
 /* =====ESCENAS ===== */
 .scene{
     position: relative;
-    background-color: var(--colorSecundario-escena);
     flex-direction: column;
     align-items: center;
     display: none;
     padding: 20px 20px;
+    
+    
 }
 
 .scene.active{
@@ -154,6 +169,7 @@ main{
     font-size: 0.9rem;
     margin-bottom: 2px;
     font-weight: bold;
+    color: var(--colorTitulos-h1)
     
 }
 
@@ -173,6 +189,9 @@ main{
     box-shadow: none;
     max-width: 400px;
     margin: 0 auto;
+    font-weight: bold;
+    color: var(--colorPrimario-fondo);
+    
 }
 
 /* ==============IMAGENES ================ */
@@ -260,7 +279,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 .boton-crear:hover, .continuar-mercado:hover,
 .btn-comprar:hover, .continuar-enemigos:hover,
 .continuar-batalla:hover {
-    background-color: #ffffff;
+    background-color: var(--colorAcento);
 }
 
 .btn-añadir{
@@ -276,7 +295,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 .btn-añadir:hover{
-    background-color:var(--colorSecundario-escena);
+    background-color:rgb(208, 64, 38);
 }
 
 
@@ -304,22 +323,24 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: var(--colorTitulos-h2);
+    border: 2px solid var(--colorBordes-Metal);
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.1);
     text-align: center;
     font-weight: bold;
     font-size: 1.1rem;
     border: 1px solid #ffffff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 
 }
 
 
 /* =====Tartejas Mercado de productos===== */
 #market-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
     justify-content: center;
+    padding: var(--size-padding-10px);
 }
 
 .card-producto{
@@ -332,6 +353,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     background-color: #ffffff;
+    border: 1px solid var(--colorBordes-Metal);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -348,10 +370,10 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 
 .card-producto.selected{
-    background-color:var(--colorAcento);
-    border: 3px solid var(--colorBotones);
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    background-color: var(--colorFooter);
+    border: 3px solid var(--colorAcento);
+    box-shadow: 0 0 20px var(--colorAcento);
 }
 
 /* =====Texto dentro de las tarjeta de productos===== */
@@ -365,7 +387,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 .prod-nombre{
-    color: #102547;
+    color: var(--colorPrimario-fondo);
     font-size: var(--font-size-p2);
     margin-bottom: var(--margin-button-5px);
     display: block;
@@ -374,7 +396,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 .prod-tipo{
     display: inline-block;
-    color: #3d0476;
+    color: var(--colorTitulos-h1);
     padding: 2px 10px;
     font-size: 0.95rem;
     margin-bottom: 8px;
@@ -391,10 +413,10 @@ footer{
     height: 150px;
     width: 100%;
 
-    background-color:var(--colorPrimario-fondo);
+    background-color: var(--colorFooter);
     z-index: 10;/* Asegura que siempre esté por encima */
 
-    border-top: 4px solid var(--colorPrimario-fondo);
+    border-top: 3px solid var(--colorBotones);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -416,13 +438,16 @@ footer{
     height: 80px;
     flex: 1;
     background-color: var(--colorSecundario-escena);
-    border: 5px solid var(--colorTitulos-h1);
+    border: 3px solid var(--colorBordes-Metal);
+    border-color: var(--colorBotones);
     aspect-ratio: 1 / 1;
     transition: transform 0.2s;
 }
 
 .inventory-slot:hover{
     transform: scale(1.05);
+    border-color: var(--colorAcento);
+    box-shadow: 0 0 10px var(--colorAcento);
 }
 
 /* =====TARJETA DE ENEMIGOS===== */
@@ -458,13 +483,16 @@ footer{
 .battle-area{
     display: flex;
     justify-content: center;
-    gap: 30px;
+    align-items: center;
+    gap: 50px;
     padding: var(--size-paddig-20px);
-    overflow: hidden;
+    overflow: hidden; 
+    position: relative;
 }
 
 .battle-card{
     background: white;
+    border: 2px solid var(--colorBordes-Metal);
     padding: var(--size-paddig-20px);
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -473,11 +501,15 @@ footer{
 }
 
 .battle-card.player{
-    transform: translateX(-100vw);
+    transform: translateX(-250%);
+    opacity: 0;
+    border-color: var(--colorBotones);
 }
 
 .battle-card.enemy{
-    transform: translateX(100vw);
+    transform: translateX(250%);
+    opacity: 0;
+    border-color: #ff4d6d;
 }
 
 .battle-card.animate-in {
@@ -491,6 +523,11 @@ footer{
     height: 120px;
 }
 
+.mensaje-batalla{
+    color: var(--colorTitulos-h1);
+    font-weight: bold;
+}
+
 /* =====RESULTADO FINAL DEL JUGADOR (VETERANO O NOVATO)===== */
 #final {
     display: flex;
@@ -498,6 +535,7 @@ footer{
     align-items: center; 
     justify-content: flex-start;
     text-align: center;
+
 }
 
 .info-final-container{
@@ -510,7 +548,7 @@ footer{
 .final-text{
     font-size: var(--font-size-p3);
     line-height: 2;
-    color: #102547;
+    color: var(--colorTitulos-h1);
 }
 
 .rango-badge{
@@ -569,18 +607,18 @@ footer{
     border-collapse: collapse;
     width: 50%;
     max-width: 600px;
-    background-color: rgba(16, 0, 43, 0.9);
-    box-shadow: 0 0 20px rgba(199, 125, 255, 0.3);
-    border: 1px solid rgba(16, 0, 43, 0.9);
+    background-color: #000;
+    box-shadow: 0 0 20px rgba(125, 209, 255, 0.3);
+    border: 1px solid var(--colorAcento);
 }
 
 .tabla-ranking th{
     padding: 12px;
-    color: var(--colorTitulos-h1);
-    border: 1px solid rgba(16, 0, 43, 0.9);
+    border: 1px solid #000;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: var(--colorBotones);
+    background-color: var(--colorAcento);
+    color: #000;
 }
 
 .tabla-ranking td{
@@ -608,7 +646,7 @@ footer{
 }
 
 .btn-consola:hover{
-    background-color: #ffffff;
+    background-color: rgb(208, 64, 38);;
 }
 
 
@@ -637,6 +675,10 @@ footer{
         padding: 0 20px;
     }
     
+    #market-container {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+    }
 
 
 }
@@ -702,7 +744,7 @@ footer{
     }
 
     .card-producto {
-        flex: 1 1 140px;
+        width: 90%; 
         min-height: 200px;
     }
 
@@ -712,12 +754,17 @@ footer{
     }
 
     
-
+    #market-container {
+        grid-template-columns: 1fr; 
+        gap: 10px;
+        
+    }
     
 
     #monedero-container {
-        width: 60px;
-        bottom: 80px;
+        grid-template-columns: 1fr; 
+        gap: 10px;
+        padding: 5px;
     }
 
     .info-final-container {
