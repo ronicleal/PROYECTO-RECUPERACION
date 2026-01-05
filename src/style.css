@@ -117,12 +117,10 @@ main{
     height: 75vh;
 
     
-    background-image: url('image/fondo16.png');
+    background-image: url('image/fondo1.png');
     background-repeat: repeat;
     background-size: 16px 16px;
-    
-    
-    
+
 }
 
 /* =====ESCENAS ===== */
@@ -655,7 +653,7 @@ footer{
 /*=======================================
   DISEÑO RESPONSIVE : TABLETS (Max 768px)
 =========================================*/
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1095px){
     main{
         width: 95%;
         height: auto;
@@ -676,7 +674,7 @@ footer{
     }
     
     #market-container {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(3, 1fr); 
         gap: 15px;
     }
 
@@ -686,7 +684,7 @@ footer{
 /*=======================================
   DISEÑO RESPONSIVE: MÓVILES (Max 480px)
 =========================================*/
-@media screen and (max-width: 480px){
+@media screen and (max-width: 678px){
     body {
         overflow-y: auto; 
     }
@@ -760,11 +758,36 @@ footer{
         
     }
     
+    .card-producto{
+        width: 300px;
+        height: auto;
+    }
 
     #monedero-container {
         grid-template-columns: 1fr; 
         gap: 10px;
         padding: 5px;
+    }
+
+
+    .battle-area {
+        gap: 5px;
+        padding: 5px;
+    }
+
+    .battle-card {
+        width: 130px;
+        padding: 8px;
+        font-size: 0.8rem; 
+    }
+
+    .battle-card img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .battle-area h2 {
+        font-size: 1.2rem;
     }
 
     .info-final-container {
