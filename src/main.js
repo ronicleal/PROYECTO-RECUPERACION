@@ -417,6 +417,7 @@ function escena5(){
         img.alt = enemigo.nombre;
 
         const info = document.createElement("p");
+        info.classList.add("info-enemigos");
         info.innerHTML = `
         <strong>${enemigo.nombre}</strong><br>
         ${enemigo.ataque} puntos de ataque
