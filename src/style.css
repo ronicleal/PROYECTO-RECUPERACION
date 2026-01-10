@@ -56,16 +56,20 @@
 }
 
 header{
+    height: 10vh;
     background-color: var(--colorPrimario-fondo);
     border-bottom: 3px solid var(--colorBotones);
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;    
 }
+
 
 body{
     display: flex;
     flex-direction: column; 
     height: 100vh;
-    overflow-y: auto;
+    overflow-y: hidden;
     margin: 0;
     padding: 0;
 
@@ -108,15 +112,12 @@ h2, h3{
 }
 
 main{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
+    flex: none;
+    height: 70vh;
     width: 100%;
-    margin: 0 auto;
-    height: 75vh;
-
-    
+    overflow-y: auto;
+    flex-direction: column;
+    display: flex;
     background-image: url('image/fondo.png');
     background-repeat: repeat;
     background-size: 16px 16px;
@@ -189,10 +190,15 @@ main{
     max-width: 400px;
     margin: 0 auto;
     font-weight: bold;
-    color: var(--colorPrimario-fondo);
+    color: black;
     
 }
 
+.error {
+  color: red;
+  font-size: 0.85em;
+  margin-bottom: 6px;
+}
 /* ==============IMAGENES ================ */
 
 /*Imagenes productos */
@@ -368,12 +374,34 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 
+
+
 .card-producto.selected{
     transform: translateY(-5px);
     background-color: var(--colorFooter);
     border: 3px solid var(--colorAcento);
     box-shadow: 0 0 20px var(--colorAcento);
 }
+
+.card-producto.oferta{
+    border: 5px solid var(--colorAcento);
+    box-shadow: 0 0 10px rgba(8, 8, 8, 0.3);
+}
+
+.etiqueta-descuento{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--colorAcento);
+    color: white;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 5;
+    
+}
+
 
 /* =====Texto dentro de las tarjeta de productos===== */
 .info-producto {
@@ -386,7 +414,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 .prod-nombre{
-    color: var(--colorPrimario-fondo);
+    color: var(--colorTitulos-h1);
     font-size: var(--font-size-p2);
     margin-bottom: var(--margin-button-5px);
     display: block;
@@ -409,7 +437,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 /* =====FOOTER===== */
 footer{
-    height: 150px;
+    height: 20vh;
     width: 100%;
 
     background-color: var(--colorFooter);
@@ -428,14 +456,13 @@ footer{
 #inventory-container{
     display: flex;
     gap: 10px;
-    width: auto;
-    height: 80px;
+    height: 80%;
+    align-items: center;
 }
 
 .inventory-slot{
-    width: 80px;
-    height: 80px;
-    flex: 1;
+    width: 10vh;
+    height: 10vh;
     background-color: var(--colorSecundario-escena);
     border: 3px solid var(--colorBordes-Metal);
     border-color: var(--colorBotones);
@@ -487,6 +514,7 @@ footer{
     padding: var(--size-paddig-20px);
     overflow: hidden; 
     position: relative;
+    width: 100%;
 }
 
 .battle-card{
@@ -496,19 +524,18 @@ footer{
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     text-align: center;
-    transition: transform 0.8s ease-out, opacity 0.8s ease-in;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+    opacity: 0;
 }
 
 .battle-card.player{
-    transform: translateX(-250%);
-    opacity: 0;
-    border-color: var(--colorBotones);
+    transform: translateX(100vw);
+    
 }
 
 .battle-card.enemy{
-    transform: translateX(250%);
-    opacity: 0;
-    border-color: #ff4d6d;
+    transform: translateX(-100vw);
+    
 }
 
 .battle-card.animate-in {
@@ -659,6 +686,10 @@ footer{
         width: 100%;
         height: 75vh;
     }
+
+    #monedero-container{
+        width: 70px;
+    }
     
     #market-container {
         grid-template-columns: repeat(4, 1fr); 
@@ -737,9 +768,10 @@ footer{
         grid-template-columns: repeat(3, 1fr);
     }
     .inventory-slot {
+    
        width: 50px;
        height: 50px;
-       flex: none;
+       
     }
 
     #market-container {

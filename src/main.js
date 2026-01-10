@@ -88,13 +88,16 @@ function escena1() {
         const ataque = parseInt(document.getElementById("ataque-input").value) || 0;
         const defensa = parseInt(document.getElementById("defensa-input").value) || 0;
         const vidaExtra = parseInt(document.getElementById("vida-input").value) || 0;
+        const errorUsuario = document.getElementById('errorUsuario');
 
 
-        // A. Validar nombre (RegEx) y que no este vacio
         if (!nombre || !REGEX_NOMBRE.test(nombre)) {
-            alert('⚠️ Nombre inválido: Primera letra mayúscula y máx 20 caracteres.');
+            errorUsuario.textContent = "Primera letra mayúscula y máx 20 caracteres.";
             return;
+        } else {
+            errorUsuario.textContent = "";
         }
+
 
         //Crear jugador
         jugador = new Jugador(nombre, ataque, defensa, VIDA_BASE + vidaExtra);
@@ -194,6 +197,16 @@ function escena3() {
         const card = document.createElement("div");
         card.classList.add("card-producto");
 
+        if(producto.rareza === rarezaDescontada && descuentoAleatorio > 0){
+            card.classList.add("oferta");
+
+            const etiquetaDescuento = document.createElement("span");
+            etiquetaDescuento.classList.add("etiqueta-descuento");
+            etiquetaDescuento.textContent = `-${descuentoAleatorio}%`;
+            card.appendChild(etiquetaDescuento);
+        }
+
+
         const img = document.createElement("img");
         img.src = obtenerImagen(producto.nombre);
         img.alt = producto.nombre;
@@ -212,13 +225,13 @@ function escena3() {
                 //Validacion si hay dinero suficiente para comprar el producto
                 const costeTotal = seleccionados.reduce((total, p) => total + p.precio, 0);
 
-                if(jugador.dinero - (costeTotal + producto.precio) < 0) {
+                if (jugador.dinero - (costeTotal + producto.precio) < 0) {
                     alert("¡No tiene sufiente dinero para añadir este producto!");
                     return;
                 }
 
                 //Si hay dinero se añade
-                if(seleccionados.length >= 6){
+                if (seleccionados.length >= 6) {
                     alert("Tu carrito esta lleno!");
                     return;
                 }
@@ -246,7 +259,7 @@ function escena3() {
     /**
      * Actualiza visualmente los slots del inventario en el footer.
      */
-    function mostrarSeleccionados(){
+    function mostrarSeleccionados() {
         //1. Obtengo todos los slot del inventario
         const slots = document.querySelectorAll(".inventory-slot");
 
@@ -256,7 +269,7 @@ function escena3() {
         //3. Recorro toda la lista de productos seleccionados
         seleccionados.forEach((producto, indice) => {
             //Si hay un slot disponible para este indice
-            if(slots[indice]){
+            if (slots[indice]) {
                 const img = document.createElement("img");
                 //Llamo a la funcion obtener imagen
                 img.src = obtenerImagen(producto.nombre);
@@ -274,7 +287,7 @@ function escena3() {
     /**
      * Calcula y muestra el saldo provisional restando el coste de la cesta actual.
      */
-    function actualizarMonedero(){
+    function actualizarMonedero() {
         const costeCesta = seleccionados.reduce((total, p) => total + p.precio, 0);
         const dineroProvisional = jugador.dinero - costeCesta;
 
@@ -289,35 +302,35 @@ function escena3() {
     btnComprar.id = "btn-comprar";
     btnComprar.textContent = "Comprar";
     btnComprar.classList.add("btn-comprar");
-    
+
     const marketScene = document.getElementById("market");
     marketScene.appendChild(btnComprar);
 
     btnComprar.addEventListener("click", () => {
-        if(seleccionados.length === 0){
+        if (seleccionados.length === 0) {
             alert("No has seleccionado ningún producto!");
             return;
         }
 
         const costeTotal = seleccionados.reduce((total, p) => total + p.precio, 0);
 
-        if(confirm(`¿Realizar compra de ${costeTotal}?`)){
-            if(jugador.gastarDinero(costeTotal)){
+        if (confirm(`¿Realizar compra de ${costeTotal}?`)) {
+            if (jugador.gastarDinero(costeTotal)) {
                 seleccionados.forEach(item => jugador.añadirItem(item));
 
                 document.getElementById("dinero-actual").textContent = jugador.dinero;
                 showScene("enemies");
                 escena4();
-       
 
-            }else{
+
+            } else {
                 alert("No tienes suficiente dinero.");
             }
         }
 
 
-        
-        
+
+
     })
 
 
@@ -331,14 +344,14 @@ function escena3() {
  * Muestra el estado actualizado del jugador con los bonos de los objetos comprados
  * (Ataque total, Defensa total y Vida máxima con consumibles).
  */
-function escena4(){
+function escena4() {
     const contenedor = document.getElementById("enemies-container");
     contenedor.innerHTML = "";
 
     const titulo = document.createElement("h2");
     titulo.textContent = "Estado Actual del Jugador";
 
-    
+
     const nombreJugador = document.createElement("p");
     nombreJugador.classList.add("nombre-jugador-escena4")
     nombreJugador.textContent = `${jugador.nombre}`;
@@ -352,7 +365,7 @@ function escena4(){
     const estadoActual = document.createElement("div");
     estadoActual.classList.add("player-estado-final");
 
-    estadoActual.innerHTML =  `
+    estadoActual.innerHTML = `
     <div class="stats-container-final">
             <div class="stat-row">
                 <div class="stat-box-final">⚔️ Ataque: ${jugador.ataqueTotal}</div>
@@ -389,9 +402,9 @@ function escena4(){
  * Presenta a los oponentes y al jefe final (Pyroar), mostrando sus estadísticas 
  * antes de iniciar la secuencia de batallas.
  */
-function escena5(){
+function escena5() {
     const contendor = document.getElementById("enemies");
-    contendor.innerHTML ="";
+    contendor.innerHTML = "";
 
     enemigos = [
         new Enemigo("Quilava", 5, 30),
@@ -435,7 +448,7 @@ function escena5(){
     btnContinuarBatalla.id = "continuar-batalla";
     btnContinuarBatalla.classList.add("continuar-batalla");
     btnContinuarBatalla.textContent = "Continuar";
-    
+
     contendor.appendChild(btnContinuarBatalla);
 
     btnContinuarBatalla.addEventListener("click", () => {
@@ -444,7 +457,7 @@ function escena5(){
 
     });
 
-    
+
 }
 
 
@@ -454,7 +467,7 @@ function escena5(){
  * Ejecuta animaciones visuales de monedas al ganar y controla la transición 
  * al resultado final o derrota.
  */
-function escena6(){
+function escena6() {
     const contenedor = document.getElementById("battle");
     contenedor.innerHTML = "";
 
@@ -474,7 +487,7 @@ function escena6(){
     /**
      * Procesa recursivamente el siguiente oponente en la lista.
      */
-    function procesarSiguienteCombate(){
+    function procesarSiguienteCombate() {
         contenedor.innerHTML = "";
         const enemigo = listaEnemigos[indiceActual];
 
@@ -483,7 +496,7 @@ function escena6(){
         const resultado = batalla(jugador, enemigo);
         const gano = resultado.ganador === jugador.nombre;
 
-        if (gano){
+        if (gano) {
             animacionMonedas(); //Se disparan las monedas si gana
         }
 
@@ -495,7 +508,7 @@ function escena6(){
         const area = document.createElement("div");
         area.classList.add("battle-area");
 
-        area.innerHTML= `
+        area.innerHTML = `
             <div class="battle-card player ${gano ? 'ganar' : 'perder'}">
                 <p>${jugador.nombre}</p>
                 <img src="./image/pikachu.png" style="width:120px">
@@ -536,20 +549,20 @@ function escena6(){
         //Boton para continuar
         const btnContinuar = document.createElement("button");
         btnContinuar.className = "continuar-mercado";
-        
-        if(!gano){
+
+        if (!gano) {
             btnContinuar.textContent = "Continuar";
             btnContinuar.addEventListener("click", () => {
                 showScene("final");
                 escena7(false);
             });
-        }else if(indiceActual < listaEnemigos.length -1){
+        } else if (indiceActual < listaEnemigos.length - 1) {
             btnContinuar.textContent = "Continuar";
-            btnContinuar.addEventListener("click", () =>{
+            btnContinuar.addEventListener("click", () => {
                 indiceActual++
                 procesarSiguienteCombate();
             });
-        }else{
+        } else {
             btnContinuar.textContent = "Continuar";
             btnContinuar.addEventListener("click", () => {
                 showScene("final");
@@ -574,7 +587,7 @@ function escena6(){
  * Calcula la puntuación final sumando el dinero restante, clasifica al jugador
  * como 'Veterano' o 'Novato' y guarda el registro en LocalStorage.
  */
-function escena7(){
+function escena7() {
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";
 
@@ -586,7 +599,7 @@ function escena7(){
     const nuevoRegistro = {
         nombre: jugador.nombre,
         puntos: jugador.puntos,
-        dinero : monedasExtras
+        dinero: monedasExtras
     };
 
     //Obtenemos los datos previos del LocalStorage o un array vacio si no hay nada
@@ -612,18 +625,18 @@ function escena7(){
     ranking.classList.add("final-text");
 
     //Utilizamos la agrupación para definir el nivel
-    if(grupos.Veterano?.length){
+    if (grupos.Veterano?.length) {
         ranking.innerHTML = `
         El jugador <strong>${jugador.nombre}</strong> ha logrado ser un: <br>
         <span class="rango-badge veterano">🥇 Veterano</span> <br>
         Puntos totales: <strong>${jugador.puntos}</strong>
         `;
-          confetti({
+        confetti({
             particleCount: 100,
             spread: 70,
             origin: { y: 0.6 }
         });
-    }else{
+    } else {
         ranking.innerHTML = `
         El jugador <strong>${jugador.nombre}</strong> es un: <br>
         <span class="rango-badge novato">👎 Novato</span> <br> 
@@ -652,7 +665,7 @@ function escena7(){
  * Recupera el historial de partidas de LocalStorage y genera una tabla comparativa.
  * Ofrece opciones para ver los datos por consola o reiniciar la aplicación.
  */
-function escena8(){
+function escena8() {
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";
 
@@ -661,7 +674,11 @@ function escena8(){
     contenedor.appendChild(titulo);
 
     //Recuperar datos del LocalStorage
-    const historial = JSON.parse(localStorage.getItem("registroJuego")) || [];
+    let historial = JSON.parse(localStorage.getItem("registroJuego")) || [];
+
+    //Ordenar en la tabla mayor a menor
+    historial.sort((a, b) => b.puntos - a.puntos);
+
 
     const tabla = document.createElement("table");
     tabla.classList.add("tabla-ranking");
@@ -686,9 +703,9 @@ function escena8(){
         </tbody>
     
     `;
-    
+
     //Si no hay datos se muestra un mensaje
-    if(historial.length === 0){
+    if (historial.length === 0) {
         tabla.innerHTML = "<tr><td colspan='3'>No hay registro aún</td></tr>";
 
     }
@@ -703,13 +720,13 @@ function escena8(){
         console.table(historial);
     });
     contenedor.appendChild(btnConsola);
-    
+
 
     //Boton reiniciar
     const btnReiniciar = document.createElement("button");
     btnReiniciar.textContent = "Reiniciar";
     btnReiniciar.classList.add("continuar-mercado");
-    btnReiniciar.addEventListener("click", ()=> {
+    btnReiniciar.addEventListener("click", () => {
         location.reload();
     });
 
