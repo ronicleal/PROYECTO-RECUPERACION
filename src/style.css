@@ -55,6 +55,17 @@
     font-family: var(--font-family-primary);
 }
 
+
+body{
+    display: flex;
+    flex-direction: column; 
+    height: 100vh;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+     
+}
+
 header{
     height: 10vh;
     background-color: var(--colorPrimario-fondo);
@@ -65,18 +76,35 @@ header{
 }
 
 
-body{
+main{
+    flex: none;
+    height: 70vh;
+    width: 100%;
+    overflow-y: auto;
+    flex-direction: column;
     display: flex;
-    flex-direction: column; 
-    height: 100vh;
-    overflow-y: hidden;
-    margin: 0;
-    padding: 0;
-
-    
-    
+    background-image: url('image/fondo.png');
+    background-repeat: repeat;
+    background-size: 16px 16px;
 }
 
+
+footer{
+    height: 20vh;
+    width: 100%;
+
+    background-color: var(--colorFooter);
+    z-index: 10;/* Asegura que siempre esté por encima */
+
+    border-top: 3px solid var(--colorBotones);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-padding-5px);
+
+    flex-shrink: 0; /*Impide que el footer se encoja si el main crece */
+    
+}
 
 h1 {
     text-align: center;
@@ -93,36 +121,6 @@ h2, h3{
 }
 
 
-.nombre-jugador{
-    text-align: right;
-    flex-grow: 1;
-    margin: 0;
-    font-weight: bold;
-    font-size: var(--font-size-p3);
-    color: var(--colorTitulos-h1);
-}
-
-.nombre-jugador-escena4{
-    text-align: center;
-    padding: 10px;
-    font-size:x-large;
-    font-weight: bold;
-    color: var(--colorTitulos-h1);
-    
-}
-
-main{
-    flex: none;
-    height: 70vh;
-    width: 100%;
-    overflow-y: auto;
-    flex-direction: column;
-    display: flex;
-    background-image: url('image/fondo.png');
-    background-repeat: repeat;
-    background-size: 16px 16px;
-
-}
 
 /* =====ESCENAS ===== */
 .scene{
@@ -131,7 +129,6 @@ main{
     align-items: center;
     display: none;
     padding: 20px 20px;
-    
     
     
 }
@@ -199,6 +196,8 @@ main{
   font-size: 0.85em;
   margin-bottom: 6px;
 }
+
+
 /* ==============IMAGENES ================ */
 
 /*Imagenes productos */
@@ -249,7 +248,26 @@ main{
         opacity: 1;
     }
 }
+
 /* ==============NOMBRE DEL JUGADOR ================ */
+
+.nombre-jugador{
+    text-align: right;
+    flex-grow: 1;
+    margin: 0;
+    font-weight: bold;
+    font-size: var(--font-size-p3);
+    color: var(--colorTitulos-h1);
+}
+
+.nombre-jugador-escena4{
+    text-align: center;
+    padding: 10px;
+    font-size:x-large;
+    font-weight: bold;
+    color: var(--colorTitulos-h1);
+    
+}
 
 input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     padding: 2px 5px;
@@ -374,8 +392,6 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 
-
-
 .card-producto.selected{
     transform: translateY(-5px);
     background-color: var(--colorFooter);
@@ -435,23 +451,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 
-/* =====FOOTER===== */
-footer{
-    height: 20vh;
-    width: 100%;
+/* =====CAJAS SLOTS DEL FOOTER===== */
 
-    background-color: var(--colorFooter);
-    z-index: 10;/* Asegura que siempre esté por encima */
-
-    border-top: 3px solid var(--colorBotones);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--size-padding-5px);
-
-    flex-shrink: 0; /*Impide que el footer se encoja si el main crece */
-    
-}
 
 #inventory-container{
     display: flex;
@@ -475,6 +476,7 @@ footer{
     border-color: var(--colorAcento);
     box-shadow: 0 0 10px var(--colorAcento);
 }
+
 
 /* =====TARJETA DE ENEMIGOS===== */
 .lista-enemigos{
@@ -504,6 +506,7 @@ footer{
     height: 120px;
     object-fit: contain;
 }
+
 
 /* =====AREA BATALLA DE JUGADOR Y ENEMIGOS===== */
 .battle-area{
@@ -554,6 +557,7 @@ footer{
     font-weight: bold;
 }
 
+
 /* =====RESULTADO FINAL DEL JUGADOR (VETERANO O NOVATO)===== */
 #final {
     display: flex;
@@ -596,6 +600,7 @@ footer{
     background-color: #757575;
     color: white;
 } 
+
 
 /* =====ANIMACION DE LAS MONEDAS AL GANAR===== */
 .moneda-animada{
