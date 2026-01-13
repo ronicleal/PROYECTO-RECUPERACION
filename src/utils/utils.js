@@ -63,7 +63,7 @@ export function obtenerImagen(nombre) {
         "Zinc": "./src/image/Zinc.png",
         "Proteína": "./src/image/proteina.png",
         "Placa Acero": "./src/image/placa_acero.png",
-        "Imán": "./src/image/iman.png",
+        "Imán": "./src/image/Iman.png",
         "Bola Luminosa": "./src/image/bola_luminosa_.png",
         "Piedra Trueno": "./src/image/piedra_trueno.png",
         "Pokeball": "./src/image/pokebolla.png",
