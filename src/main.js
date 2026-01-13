@@ -522,7 +522,7 @@ function escena6() {
         area.innerHTML = `
             <div class="battle-card player ${gano ? 'ganar' : 'perder'}">
                 <p>${jugador.nombre}</p>
-                <img src="./image/pikachu.png" style="width:120px">
+                <img src="./src/image/pikachu.png" style="width:120px">
                 <p>♥️Vida restante: ${jugador.vida}</p>
                 <p>⚔️Ataque total: ${jugador.ataqueTotal}</p>
             </div>

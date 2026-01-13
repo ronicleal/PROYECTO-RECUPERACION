@@ -57,24 +57,24 @@ export function showScene(id) {
  */
 export function obtenerImagen(nombre) {
     const imagenes = {
-        "Baya Aranja": "./image/Bayas_Aranja.png",
-        "Superpoción": "./image/Super_pocion.png",
-        "Hiperpoción": "./image/Hiperpocion.png",
-        "Zinc": "./image/Zinc.png",
-        "Proteína": "./image/proteina.png",
-        "Placa Acero": "./image/placa_acero.png",
-        "Imán": "./image/iman.png",
-        "Bola Luminosa": "./image/bola_luminosa_.png",
-        "Piedra Trueno": "./image/piedra_trueno.png",
-        "Pokeball": "./image/pokebolla.png",
-        "Quilava": "./image/Quilava.png",
-        "Raticate": "./image/Raticate.png",
-        "Sneasel": "./image/Sneasel.png",
-        "Pyroar": "./image/Pyroar.png",
+        "Baya Aranja": "./src/image/Bayas_Aranja.png",
+        "Superpoción": "./src/image/Super_pocion.png",
+        "Hiperpoción": "./src/image/Hiperpocion.png",
+        "Zinc": "./src/image/Zinc.png",
+        "Proteína": "./src/image/proteina.png",
+        "Placa Acero": "./src/image/placa_acero.png",
+        "Imán": "./src/image/iman.png",
+        "Bola Luminosa": "./src/image/bola_luminosa_.png",
+        "Piedra Trueno": "./src/image/piedra_trueno.png",
+        "Pokeball": "./src/image/pokebolla.png",
+        "Quilava": "./src/image/Quilava.png",
+        "Raticate": "./src/image/Raticate.png",
+        "Sneasel": "./src/image/Sneasel.png",
+        "Pyroar": "./src/image/Pyroar.png",
     };
 
     // Si no existe imagen, usa una genérica
-    return imagenes[nombre] || "./image/default.png";
+    return imagenes[nombre] || "./src/image/default.png";
 }
 
 
@@ -88,9 +88,9 @@ export function obtenerImagen(nombre) {
  */
 export function animacionMonedas(){
   const monedas = `
-    <img src="./image/moneda.png" alt="moneda" class="moneda-animada" style="left: 25%;">
-    <img src="./image/moneda.png" alt="moneda" class="moneda-animada" style="left: 50%;">
-    <img src="./image/moneda.png" alt="moneda" class="moneda-animada" style="left: 75%;">
+    <img src="./src/image/moneda.png" alt="moneda" class="moneda-animada" style="left: 25%;">
+    <img src="./src/image/moneda.png" alt="moneda" class="moneda-animada" style="left: 50%;">
+    <img src="./src/image/moneda.png" alt="moneda" class="moneda-animada" style="left: 75%;">
   `
   //Insertamos al final del body
   document.body.insertAdjacentHTML('beforeend', monedas);
