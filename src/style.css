@@ -249,6 +249,37 @@ h2, h3{
     }
 }
 
+/*Animación del carrito flotante */
+.carrito-flotante{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%, -50%);
+    width: 40px;
+    z-index: 10000;
+    pointer-events: none;
+    animation: volcarAlCesto 0.8s ease-in-out forwards;
+}
+
+@keyframes volcarAlCesto {
+    0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    50%{
+        transform: translate(-20%, -100%) scale(1.2) rotate(-20deg);
+    }
+
+    100%{
+        /*Se dirige al footer*/
+        top: 90vh;
+        left: 50%;
+        transform: translate(-50%, 0) scale(0.2) rotate(10deg);
+        opacity: 0;
+    }
+}
+
 /* ==============NOMBRE DEL JUGADOR ================ */
 
 .nombre-jugador{

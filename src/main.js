@@ -1,6 +1,6 @@
 import { Jugador } from "./modules/jugadores.js";
 import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
-import { animacionMonedas, refrescarVisualMonedero, showScene } from "./utils/utils.js";
+import { animacionMonedas, animarCarrito, refrescarVisualMonedero, showScene } from "./utils/utils.js";
 import { obtenerImagen } from "./utils/utils.js";
 import { Enemigo, Jefe } from "./modules/enemigos.js";
 import { agruparPorNivel, batalla } from "./modules/ranking.js";
@@ -241,7 +241,7 @@ function escena3() {
         btnAñadir.textContent = "Añadir";
         btnAñadir.style.marginTop = "5px";
 
-        btnAñadir.addEventListener("click", () => {
+        btnAñadir.addEventListener("click", (e) => {
             if (!seleccionados.includes(producto)) {
                 //Validacion si hay dinero suficiente para comprar el producto
                 const costeTotal = seleccionados.reduce((total, p) => total + p.precio, 0);
@@ -260,6 +260,8 @@ function escena3() {
                 seleccionados.push(producto);
                 card.classList.add("selected");
                 btnAñadir.textContent = "Retirar";
+                animarCarrito(e.clientX, e.clientY);
+                
             } else {
                 //Quitar de la cesta
                 seleccionados = seleccionados.filter(p => p !== producto);

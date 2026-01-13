@@ -118,3 +118,19 @@ export function refrescarVisualMonedero(jugador, costeCesta = 0) {
         displayDinero.textContent = jugador.dinero - costeCesta;
     }
 }
+
+export function animarCarrito(x, y){
+  const carrito = document.createElement("img");
+  carrito.src = "./src/image/Carrito.png";
+  carrito.className = "carrito-flotante";
+
+  carrito.style.left = `${x}px`;
+  carrito.style.top = `${y}px`;
+
+  document.body.appendChild(carrito);
+
+  //Lo elimino del DOM cuando termine la animacion
+  setTimeout( () => {
+    carrito.remove();
+  }, 800);
+}
