@@ -1,6 +1,6 @@
 import { Jugador } from "./modules/jugadores.js";
 import { aplicarDescuentoPorRareza, obtenerTodasLasRarezas } from "./modules/mercado.js";
-import { animacionMonedas, showScene } from "./utils/utils.js";
+import { animacionMonedas, refrescarVisualMonedero, showScene } from "./utils/utils.js";
 import { obtenerImagen } from "./utils/utils.js";
 import { Enemigo, Jefe } from "./modules/enemigos.js";
 import { agruparPorNivel, batalla } from "./modules/ranking.js";
@@ -28,7 +28,10 @@ function iniciarJuego() {
 function escena1() {
     const btnCrear = document.getElementById("crear-jugador");
     const inputs = document.querySelectorAll('.formulario-crear-jugador input[type="number"]');
+    const nombreInput = document.getElementById("nombre-jugador");
     document.getElementById("imagen-jugador").style.display = "none";
+
+    btnCrear.disabled = true;
 
 
     /**
@@ -74,29 +77,47 @@ function escena1() {
         document.getElementById("defensa-val").textContent = defensa;
         document.getElementById("vida-val").textContent = VIDA_BASE + vidaExtra;
 
+        comprobarEstadoBoton();
+
+
+    }
+
+    function comprobarEstadoBoton() {
+        const nombre = nombreInput.value.trim();
+        const todosLosInputRellenos = Array.from(inputs).every(i => i.value !== "");
+        const nombreEsValido = REGEX_NOMBRE.test(nombre);
+        const errorUsuario = document.getElementById('errorUsuario');
+
+        if (nombre !== "" && !nombreEsValido) {
+            errorUsuario.textContent = "Primera letra mayúscula y máx 20 caracteres.";
+
+        } else {
+            errorUsuario.textContent = "";
+
+        }
+
+        if (nombreEsValido && todosLosInputRellenos) {
+            btnCrear.disabled = false;
+        } else {
+            btnCrear.disabled = true;
+        }
     }
 
     inputs.forEach(input => {
         input.addEventListener('input', (e) => validarYactualizarPuntos(e));
     });
 
+    nombreInput.addEventListener('input', comprobarEstadoBoton);
+
     //LOGICA DEL BOTON CREAR JUGADOR
     btnCrear.addEventListener("click", function () {
-        const nombre = document.getElementById("nombre-jugador").value.trim();
+        const nombre = nombreInput.value.trim();
 
         //Obtener valores finales (Aseguridando que se ejecute la validacion)
         const ataque = parseInt(document.getElementById("ataque-input").value) || 0;
         const defensa = parseInt(document.getElementById("defensa-input").value) || 0;
         const vidaExtra = parseInt(document.getElementById("vida-input").value) || 0;
-        const errorUsuario = document.getElementById('errorUsuario');
 
-
-        if (!nombre || !REGEX_NOMBRE.test(nombre)) {
-            errorUsuario.textContent = "Primera letra mayúscula y máx 20 caracteres.";
-            return;
-        } else {
-            errorUsuario.textContent = "";
-        }
 
 
         //Crear jugador
@@ -197,7 +218,7 @@ function escena3() {
         const card = document.createElement("div");
         card.classList.add("card-producto");
 
-        if(producto.rareza === rarezaDescontada && descuentoAleatorio > 0){
+        if (producto.rareza === rarezaDescontada && descuentoAleatorio > 0) {
             card.classList.add("oferta");
 
             const etiquetaDescuento = document.createElement("span");
@@ -247,7 +268,9 @@ function escena3() {
             }
 
             mostrarSeleccionados();
-            actualizarMonedero();
+            
+            const costeCesta = seleccionados.reduce((total, p) => total + p.precio, 0);
+            refrescarVisualMonedero(jugador, costeCesta);
         });
 
         card.appendChild(img);
@@ -283,19 +306,6 @@ function escena3() {
         })
 
     }
-
-    /**
-     * Calcula y muestra el saldo provisional restando el coste de la cesta actual.
-     */
-    function actualizarMonedero() {
-        const costeCesta = seleccionados.reduce((total, p) => total + p.precio, 0);
-        const dineroProvisional = jugador.dinero - costeCesta;
-
-        //Mostramos cuanto dinero queda en la bolsa
-        document.getElementById("dinero-actual").textContent = dineroProvisional;
-
-    }
-
 
     //Boton comprar y pasar a la siguiente escena
     const btnComprar = document.createElement("button");
@@ -498,6 +508,7 @@ function escena6() {
 
         if (gano) {
             animacionMonedas(); //Se disparan las monedas si gana
+            refrescarVisualMonedero(jugador);
         }
 
 

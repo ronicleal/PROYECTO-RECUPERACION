@@ -102,3 +102,19 @@ export function animacionMonedas(){
   }, 3500);
 
 }
+
+
+/**
+ * Actualiza el texto del monedero en el DOM.
+ * @param {Object} personaje - El objeto del jugador que contiene la propiedad dinero.
+ * @param {number} [costeCesta=0] - Cantidad a restar visualmente del total.
+ */
+export function refrescarVisualMonedero(jugador, costeCesta = 0) {
+    const displayDinero = document.getElementById("dinero-actual");
+    
+    console.log("Dinero actual del jugador:", jugador.dinero);
+    
+    if (displayDinero && jugador) {
+        displayDinero.textContent = jugador.dinero - costeCesta;
+    }
+}
