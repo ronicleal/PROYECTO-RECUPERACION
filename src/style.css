@@ -635,32 +635,47 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 /* =====TABLA RANKING FINAL===== */
 .tabla-ranking {
     margin: 20px auto;
-    border-collapse: collapse;
-    width: 50%;
+    border-collapse: separate;
+    border-spacing: 0;
+    
+    width: 80%;
     max-width: 600px;
-    background-color: var(--colorTitulos-h1);
+    background-color: var(--colorPrimario-fondo);
     box-shadow: 0 0 20px rgba(4, 4, 4, 0.3);
     border: 1px solid var(--colorAcento);
+
+    display: block;
+    max-height: 230px;
+    overflow-y: auto;
 }
 
 .tabla-ranking th{
     padding: 12px;
+    width: 200px;
     border: 1px solid #000;
     font-weight: bold;
     text-transform: uppercase;
     background-color: var(--colorAcento);
     color: #000;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .tabla-ranking td{
     padding: var(--size-padding-10px);
     border: 1px solid rgba(16, 0, 43, 0.9);
     text-align: center;
-    background-color:var(--colorPrimario-fondo);
+    background-color:inherit;
 }
 
 .tabla-ranking tr:nth-child(even) {
-    background-color: var(--colorSecundario-escena);
+    background-color: var(--colorBotones);
+}
+
+.tabla-ranking tr:nth-child(odd) {
+    background-color: var(--colorPrimario-fondo);
 }
 
 /* =====BOTON MOSTRAR TABLA POR CONSOLA===== */

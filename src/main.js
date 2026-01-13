@@ -684,8 +684,25 @@ function escena8() {
     titulo.textContent = "Ranking";
     contenedor.appendChild(titulo);
 
+    const jugadoresPorDefecto = [
+        { nombre: "Ana", puntos: 500, dinero: 1000 },
+        { nombre: "María", puntos: 450, dinero: 800 },
+        { nombre: "Joaquín", puntos: 300, dinero: 500 },
+        { nombre: "Angel", puntos: 250, dinero: 400 },
+        { nombre: "Carmen", puntos: 200, dinero: 300 },
+        { nombre: "Diego", puntos: 150, dinero: 200 },
+        { nombre: "Rebeca", puntos: 100, dinero: 100 },
+        { nombre: "Julia", puntos: 50, dinero: 50 },
+        { nombre: "Alba", puntos: 40, dinero: 40 },
+        { nombre: "Sergio", puntos: 10, dinero: 10 }
+    ];
+
     //Recuperar datos del LocalStorage
     let historial = JSON.parse(localStorage.getItem("registroJuego")) || [];
+
+    if(historial.length < 10){
+        historial = [...historial, ...jugadoresPorDefecto];
+    }
 
     //Ordenar en la tabla mayor a menor
     historial.sort((a, b) => b.puntos - a.puntos);
