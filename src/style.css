@@ -1,45 +1,45 @@
 /*==================================
     VARIABLES DE DISEÑO
 ====================================*/
-:root{
-/*PALETA DE COLORES*/
---colorPrimario-fondo: #ffffff;
---colorSecundario-escena : #daba86;
---colorAcento : rgb(208, 64, 38);
---colorBotones: #ffc300;
---colorFooter: #5d4013;
---colorTitulos-h1:#000000;
---colorTitulos-h2: #ffffff;
+:root {
+    /*PALETA DE COLORES*/
+    --colorPrimario-fondo: #ffffff;
+    --colorSecundario-escena: #daba86;
+    --colorAcento: rgb(208, 64, 38);
+    --colorBotones: #ffc300;
+    --colorFooter: #5d4013;
+    --colorTitulos-h1: #000000;
+    --colorTitulos-h2: #ffffff;
 
-/*TIPOGRAFIA Y TAMAÑOS*/
---font-family-primary: Arial, sans-serif;
---font-size-title-h1: 2rem;
---font-size-title-h2: 1rem;
---font-size-p: 1.2rem;
---font-size-p2: 1.1rem;
---font-size-p3: 1.5rem;
---font-size-p4: 1.8rem;
-
-
-
-/* ESPACIADOS Y MARGENES */
---size-padding-5px : 5px;
---size-padding-10px : 10px;
---size-padding-15px : 15px;
---size-paddig-20px : 20px;
---size-padding-30px : 30px;
-
---margin-button-2px : 2px;
---margin-button-5px : 5px;
---margin-button-10px : 10px;
---margin-button-15px : 15px;
---margin-button-20px : 20px;
+    /*TIPOGRAFIA Y TAMAÑOS*/
+    --font-family-primary: Arial, sans-serif;
+    --font-size-title-h1: 2rem;
+    --font-size-title-h2: 1rem;
+    --font-size-p: 1.2rem;
+    --font-size-p2: 1.1rem;
+    --font-size-p3: 1.5rem;
+    --font-size-p4: 1.8rem;
 
 
---margin-top-10px : 10px;
---margin-top-20px : 20px;
---margin-top-30px : 30px;
---margin-top-100px : 100px;
+
+    /* ESPACIADOS Y MARGENES */
+    --size-padding-5px: 5px;
+    --size-padding-10px: 10px;
+    --size-padding-15px: 15px;
+    --size-paddig-20px: 20px;
+    --size-padding-30px: 30px;
+
+    --margin-button-2px: 2px;
+    --margin-button-5px: 5px;
+    --margin-button-10px: 10px;
+    --margin-button-15px: 15px;
+    --margin-button-20px: 20px;
+
+
+    --margin-top-10px: 10px;
+    --margin-top-20px: 20px;
+    --margin-top-30px: 30px;
+    --margin-top-100px: 100px;
 
 
 }
@@ -48,7 +48,7 @@
   ESTILOS GENERALES Y LAYOUT
 ====================================*/
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -56,27 +56,27 @@
 }
 
 
-body{
+body {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     height: 100vh;
     overflow-y: hidden;
     margin: 0;
     padding: 0;
-     
+
 }
 
-header{
+header {
     height: 10vh;
     background-color: var(--colorPrimario-fondo);
     border-bottom: 3px solid var(--colorBotones);
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
 }
 
 
-main{
+main {
     flex: none;
     height: 70vh;
     width: 100%;
@@ -89,12 +89,13 @@ main{
 }
 
 
-footer{
+footer {
     height: 20vh;
     width: 100%;
 
     background-color: var(--colorFooter);
-    z-index: 10;/* Asegura que siempre esté por encima */
+    z-index: 10;
+    /* Asegura que siempre esté por encima */
 
     border-top: 3px solid var(--colorBotones);
     display: flex;
@@ -102,8 +103,9 @@ footer{
     justify-content: center;
     padding: var(--size-padding-5px);
 
-    flex-shrink: 0; /*Impide que el footer se encoja si el main crece */
-    
+    flex-shrink: 0;
+    /*Impide que el footer se encoja si el main crece */
+
 }
 
 h1 {
@@ -114,8 +116,9 @@ h1 {
     margin-top: 10px;
 }
 
-h2, h3{
-    color:var(--colorTitulos-h1);
+h2,
+h3 {
+    color: var(--colorTitulos-h1);
     text-align: center;
     font-size: var(--font-size-title-h1);
 }
@@ -123,21 +126,21 @@ h2, h3{
 
 
 /* =====ESCENAS ===== */
-.scene{
+.scene {
     position: relative;
     flex-direction: column;
     align-items: center;
     display: none;
     padding: 20px 20px;
-    
-    
+
+
 }
 
-.scene.active{
+.scene.active {
     display: flex;
 }
 
-.scene1-container{
+.scene1-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -147,7 +150,7 @@ h2, h3{
     margin-bottom: 0;
 }
 
-.scene1-container img{
+.scene1-container img {
     width: 130px;
     height: auto;
 }
@@ -155,22 +158,21 @@ h2, h3{
 
 /* =============FORMULARIO ============= */
 
-.input-group{
+.input-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
     align-items: flex-start;
 }
 
-.input-group label{
+.input-group label {
     font-size: 0.9rem;
     margin-bottom: 2px;
     font-weight: bold;
     color: var(--colorTitulos-h1)
-    
 }
 
-.input-group input{
+.input-group input {
     width: 100%;
     max-width: none;
     height: 40px;
@@ -178,9 +180,10 @@ h2, h3{
     background-color: var(--colorPrimario-fondo);
     padding: var(--size-padding-10px);
     font-size: var(--font-size-title-h2);
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-.container-formulario{
+
+.container-formulario {
     border: none;
     background-color: transparent;
     box-shadow: none;
@@ -188,52 +191,52 @@ h2, h3{
     margin: 0 auto;
     font-weight: bold;
     color: black;
-    
+
 }
 
 .error {
-  color: red;
-  font-size: 0.85em;
-  margin-bottom: 6px;
+    color: red;
+    font-size: 0.85em;
+    margin-bottom: 6px;
 }
 
 
 /* ==============IMAGENES ================ */
 
 /*Imagenes productos */
-.card-producto img{
+.card-producto img {
     width: 80px;
     height: 80px;
     object-fit: contain;
     margin-bottom: var(--margin-button-5px);
-   
+
 }
 
 /*Imagen Monedero */
 #monedero-container {
     position: fixed;
-    left: 2vw; 
-    bottom: 1vh; 
+    left: 2vw;
+    bottom: 1vh;
     width: 100px;
-    z-index: 100; 
+    z-index: 100;
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#monedero-container img{
+#monedero-container img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-#dinero-actual{
+#dinero-actual {
     position: absolute;
     margin-top: 5px;
 }
 
-.monedero-animado{
+.monedero-animado {
     animation: slideInMonedero 1.5s ease-out forwards;
 }
 
@@ -250,7 +253,7 @@ h2, h3{
 }
 
 /*Animación del carrito flotante */
-.carrito-flotante{
+.carrito-flotante {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -267,11 +270,11 @@ h2, h3{
         opacity: 1;
     }
 
-    50%{
+    50% {
         transform: translate(-20%, -100%) scale(1.2) rotate(-20deg);
     }
 
-    100%{
+    100% {
         /*Se dirige al footer*/
         top: 90vh;
         left: 50%;
@@ -282,7 +285,7 @@ h2, h3{
 
 /* ==============NOMBRE DEL JUGADOR ================ */
 
-.nombre-jugador{
+.nombre-jugador {
     text-align: right;
     flex-grow: 1;
     margin: 0;
@@ -291,16 +294,19 @@ h2, h3{
     color: var(--colorTitulos-h1);
 }
 
-.nombre-jugador-escena4{
+.nombre-jugador-escena4 {
     text-align: center;
     padding: 10px;
-    font-size:x-large;
+    font-size: x-large;
     font-weight: bold;
     color: var(--colorTitulos-h1);
-    
+
 }
 
-input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
+input#nombre-jugador,
+#ataque-input,
+#defensa-input,
+#vida-input {
     padding: 2px 5px;
     border-radius: 5px;
     text-align: center;
@@ -308,35 +314,39 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 /* ==============BOTONES================ */
-.boton-crear, 
-.continuar-mercado, .btn-comprar,
- .continuar-enemigos, .continuar-batalla {
-   margin-bottom: var(--margin-button-20px);
-   margin-top: var(--margin-top-10px);
-   background-color: var(--colorBotones);
-   padding: var(--size-padding-5px);
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
-   transition: 0.3s;
-   display: block;
+.boton-crear,
+.continuar-mercado,
+.btn-comprar,
+.continuar-enemigos,
+.continuar-batalla {
+    margin-bottom: var(--margin-button-20px);
+    margin-top: var(--margin-top-10px);
+    background-color: var(--colorBotones);
+    padding: var(--size-padding-5px);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
 
-   font-weight: bold;
+    font-weight: bold;
 
-   width: fit-content;
-   margin-left: auto;
-   margin-right: auto;
-   margin-bottom: var(--margin-button-20px);
-   
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--margin-button-20px);
+
 }
 
-.boton-crear:hover, .continuar-mercado:hover,
-.btn-comprar:hover, .continuar-enemigos:hover,
+.boton-crear:hover,
+.continuar-mercado:hover,
+.btn-comprar:hover,
+.continuar-enemigos:hover,
 .continuar-batalla:hover {
     background-color: var(--colorAcento);
 }
 
-.btn-añadir{
+.btn-añadir {
     position: absolute;
     bottom: 15px;
     background-color: var(--colorBotones);
@@ -348,22 +358,22 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     transition: transform 0.2s;
 }
 
-.btn-añadir:hover{
-    background-color:rgb(208, 64, 38);
+.btn-añadir:hover {
+    background-color: rgb(208, 64, 38);
 }
 
 
 /* =====TABLA DE ESTADO INICIAL DEL JUGADOR===== */
-.stats-container-final{
+.stats-container-final {
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    gap: 15px;           
+    align-items: center;
+    gap: 15px;
     margin-top: 5px;
 
 }
 
-.stat-row{
+.stat-row {
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -371,8 +381,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 }
 
-.stat-box-final{
-    width: 280px;        
+.stat-box-final {
+    width: 280px;
     height: 80px;
     display: flex;
     align-items: center;
@@ -389,15 +399,15 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 
 /* =====Tartejas Mercado de productos===== */
-#market-container{
-    display:grid;
+#market-container {
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     justify-content: center;
     padding: var(--size-padding-10px);
 }
 
-.card-producto{
+.card-producto {
     flex: 0 0 150px;
     padding: var(--size-padding-15px);
     border-radius: 8px;
@@ -405,7 +415,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     width: 200px;
     min-height: 250px;
 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--colorPrimario-fondo);
     border: 1px solid var(--colorBordes-Metal);
     display: flex;
@@ -415,27 +425,27 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     position: relative;
 
     transition: transform 0.2s;
-    
+
 }
 
-.card-producto:hover{
+.card-producto:hover {
     transform: scale(1.05);
 }
 
 
-.card-producto.selected{
+.card-producto.selected {
     transform: translateY(-5px);
     background-color: var(--colorFooter);
     border: 3px solid var(--colorAcento);
     box-shadow: 0 0 20px var(--colorAcento);
 }
 
-.card-producto.oferta{
+.card-producto.oferta {
     border: 5px solid var(--colorAcento);
     box-shadow: 0 0 10px rgba(8, 8, 8, 0.3);
 }
 
-.etiqueta-descuento{
+.etiqueta-descuento {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -446,7 +456,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     font-weight: bold;
     border-radius: 4px;
     z-index: 5;
-    
+
 }
 
 
@@ -460,7 +470,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     text-align: center;
 }
 
-.prod-nombre{
+.prod-nombre {
     color: var(--colorTitulos-h1);
     font-size: var(--font-size-p2);
     margin-bottom: var(--margin-button-5px);
@@ -468,7 +478,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 }
 
-.prod-tipo{
+.prod-tipo {
     display: inline-block;
     color: var(--colorTitulos-h1);
     padding: 2px 10px;
@@ -476,7 +486,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     margin-bottom: 8px;
 }
 
-.prod-precio{
+.prod-precio {
     font-size: var(--font-size-title-h2);
     font-weight: bold;
 }
@@ -485,14 +495,14 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 /* =====CAJAS SLOTS DEL FOOTER===== */
 
 
-#inventory-container{
+#inventory-container {
     display: flex;
     gap: 10px;
     height: 80%;
     align-items: center;
 }
 
-.inventory-slot{
+.inventory-slot {
     width: 10vh;
     height: 10vh;
     background-color: var(--colorSecundario-escena);
@@ -502,7 +512,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     transition: transform 0.2s;
 }
 
-.inventory-slot:hover{
+.inventory-slot:hover {
     transform: scale(1.05);
     border-color: var(--colorAcento);
     box-shadow: 0 0 10px var(--colorAcento);
@@ -510,7 +520,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 
 /* =====TARJETA DE ENEMIGOS===== */
-.lista-enemigos{
+.lista-enemigos {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -518,11 +528,11 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     margin-top: var(--margin-top-20px);
 }
 
-.card-enemigo{
+.card-enemigo {
     width: 180px;
     padding: var(--size-padding-10px);
     background-color: var(--colorPrimario-fondo);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     text-align: center;
     transition: transform 0.2s;
@@ -532,7 +542,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     transform: scale(1.05);
 }
 
-.card-enemigo img{
+.card-enemigo img {
     width: 120px;
     height: 120px;
     object-fit: contain;
@@ -540,36 +550,36 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
 
 /* =====AREA BATALLA DE JUGADOR Y ENEMIGOS===== */
-.battle-area{
+.battle-area {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 50px;
     padding: var(--size-paddig-20px);
-    overflow: hidden; 
+    overflow: hidden;
     position: relative;
     width: 100%;
 }
 
-.battle-card{
+.battle-card {
     background: var(--colorPrimario-fondo);
     border: 2px solid var(--colorBordes-Metal);
     padding: var(--size-paddig-20px);
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 1s ease-out, opacity 1s ease-out;
     opacity: 0;
 }
 
-.battle-card.player{
+.battle-card.player {
     transform: translateX(100vw);
-    
+
 }
 
-.battle-card.enemy{
+.battle-card.enemy {
     transform: translateX(-100vw);
-    
+
 }
 
 .battle-card.animate-in {
@@ -578,12 +588,12 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 }
 
 
-.battle-card img{
+.battle-card img {
     width: 120px;
     height: 120px;
 }
 
-.mensaje-batalla{
+.mensaje-batalla {
     color: var(--colorTitulos-h1);
     font-weight: bold;
 }
@@ -593,26 +603,26 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 #final {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     justify-content: flex-start;
     text-align: center;
 
 }
 
-.info-final-container{
+.info-final-container {
     margin-top: 70px;
     padding: var(--size-padding-30px);
     width: 80%;
     max-width: 600px;
 }
 
-.final-text{
+.final-text {
     font-size: var(--font-size-p3);
     line-height: 2;
     color: var(--colorTitulos-h1);
 }
 
-.rango-badge{
+.rango-badge {
     display: inline-block;
     padding: 10px 20px;
     border-radius: 50px;
@@ -621,20 +631,20 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     font-size: var(--font-size-p4);
 }
 
-.veterano{
+.veterano {
     background-color: #f9a825;
     color: white;
     box-shadow: 0 0 15px rgba(249, 168, 37, 0.5);
 }
 
-.novato{
+.novato {
     background-color: #757575;
     color: white;
-} 
+}
 
 
 /* =====ANIMACION DE LAS MONEDAS AL GANAR===== */
-.moneda-animada{
+.moneda-animada {
     position: fixed;
     top: -100px;
     width: 60px;
@@ -668,7 +678,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     margin: 20px auto;
     border-collapse: separate;
     border-spacing: 0;
-    
+
     width: 80%;
     max-width: 600px;
     background-color: var(--colorPrimario-fondo);
@@ -680,7 +690,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     overflow-y: auto;
 }
 
-.tabla-ranking th{
+.tabla-ranking th {
     padding: 12px;
     width: 200px;
     border: 1px solid #000;
@@ -694,11 +704,11 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     z-index: 10;
 }
 
-.tabla-ranking td{
+.tabla-ranking td {
     padding: var(--size-padding-10px);
     border: 1px solid rgba(16, 0, 43, 0.9);
     text-align: center;
-    background-color:inherit;
+    background-color: inherit;
 }
 
 .tabla-ranking tr:nth-child(even) {
@@ -722,7 +732,7 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     transition: transform 0.2s;
 }
 
-.btn-consola:hover{
+.btn-consola:hover {
     background-color: var(--colorAcento)
 }
 
@@ -732,25 +742,25 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 /*=======================================
   DISEÑO RESPONSIVE : 1024px (Tablets Pro)
 =========================================*/
-@media screen and (max-width: 1024px){
-    main{
+@media screen and (max-width: 1024px) {
+    main {
         width: 100%;
         height: 75vh;
     }
 
-    #monedero-container{
+    #monedero-container {
         width: 75px;
         left: 5px;
     }
-    
+
     #market-container {
-        grid-template-columns: repeat(4, 1fr); 
+        grid-template-columns: repeat(4, 1fr);
         gap: 15px;
     }
 
-    .lista-enemigos{
+    .lista-enemigos {
         display: grid;
-        grid-template-columns:repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .battle-area {
@@ -768,9 +778,9 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 /*=======================================
   DISEÑO RESPONSIVE: 720px (Tablets estándar)
 =========================================*/
-@media screen and (max-width: 720px){
+@media screen and (max-width: 720px) {
 
-    #monedero-container{
+    #monedero-container {
         width: 75px;
         left: 5px;
     }
@@ -780,12 +790,12 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     }
 
     .stat-box-final {
-        width: 150px; 
+        width: 150px;
         font-size: 0.9rem;
     }
 
     #market-container {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .battle-area {
@@ -799,40 +809,39 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 
     .battle-card img {
         width: 100px;
-        
+
     }
-   
+
 }
 
 
 /*=======================================
   DISEÑO RESPONSIVE: 480px (iPhone y similares)
 =========================================*/
-@media screen and (max-width: 480px){
-    header { 
-        height: calc(10vh - 3px); 
+@media screen and (max-width: 480px) {
+    header {
+        height: calc(10vh - 3px);
     }
 
-    footer { 
-        height: calc(20vh - 3px); 
-        padding-bottom: env(safe-area-inset-bottom); 
+    footer {
+        height: calc(20vh - 3px);
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     #inventory-container {
         display: flex;
-        grid-template-columns: none; 
+        grid-template-columns: none;
         flex-wrap: nowrap;
-        gap: 4px;
+        gap: 5px;
         justify-content: flex-start;
         width: 100%;
-        padding-left: 65px;
+        padding-left: 70px;
     }
 
     .inventory-slot {
-        width: 14vw; 
-        height: 14vw;
-        max-width: 55px;
-        max-height: 55px;
+        width: 45px;
+        height: 45px;
+        flex-shrink: 0;
     }
 
     #market-container {
@@ -845,18 +854,31 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
         padding: 8px;
     }
 
-    #monedero-container{
+    #monedero-container {
+        position: fixed;
         width: 60px;
-        bottom: 5px;
+        bottom: 2vh;
         left: 5px;
-        margin-bottom: env(safe-area-inset-bottom);
-        margin-left: env(safe-area-inset-left);
+        z-index: 1000;
     }
 
     #dinero-actual {
-        font-size: 0.9rem; 
+        font-size: 0.9rem;
+        
     }
 
+    .tabla-ranking {
+        width: 100%;
+        display: table;
+        max-height: none;
+    }
+
+    .tabla-ranking th,
+    .tabla-ranking td {
+        width: 33.33%;
+        padding: 8px 4px;
+        font-size: 0.85rem;
+    }
 
 
 
@@ -869,50 +891,51 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
   DISEÑO RESPONSIVE: 360px (Móviles pequeños)
 =========================================*/
 @media screen and (max-width: 360px) {
-    h1{
+    h1 {
         font-size: 1.3rem;
     }
 
-    .scene { 
-        padding: 10px; 
+    .scene {
+        padding: 10px;
     }
 
 
     .scene1-container img {
-        width: 80px; 
+        width: 80px;
     }
 
-    #inventory-container{
+    #inventory-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
+
     .inventory-slot {
-    
-       width: 42px;
-       height: 42px;
-       
+
+        width: 42px;
+        height: 42px;
+
     }
 
     #market-container {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .card-producto{
+    .card-producto {
         width: 160px;
         height: 160px;
     }
 
-    .card-enemigo{
+    .card-enemigo {
         width: 150px;
         height: 150px;
     }
 
-    .card-enemigo img{
+    .card-enemigo img {
         width: 90px;
         height: 90px;
     }
 
-    .info-enemigos{
+    .info-enemigos {
         font-size: small;
     }
 
@@ -922,19 +945,19 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     }
 
     .battle-card {
-        width: 150px; 
+        width: 150px;
         height: 150px;
         padding: 5px;
-        font-size:small;
+        font-size: small;
     }
 
     .battle-card img {
         width: 90px;
         height: 90px;
     }
-    
+
     .battle-area h2 {
         font-size: 1rem;
     }
-    
+
 }
