@@ -119,6 +119,15 @@ export function refrescarVisualMonedero(jugador, costeCesta = 0) {
     }
 }
 
+
+/**
+ * Crea y ejecuta una animación visual de un carrito de compras volando hacia el inventario.
+ * La animación nace en las coordenadas especificadas (donde el usuario hizo clic)
+ * y el elemento se elimina automáticamente del DOM al finalizar.
+ * * @param {number} x - La coordenada horizontal (píxeles) donde se originará la animación (e.clientX).
+ * @param {number} y - La coordenada vertical (píxeles) donde se originará la animación (e.clientY).
+ * @returns {void} No retorna ningún valor.
+ */
 export function animarCarrito(x, y){
   const carrito = document.createElement("img");
   carrito.src = "./src/image/Carrito.png";
