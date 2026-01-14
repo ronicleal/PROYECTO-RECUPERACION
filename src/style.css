@@ -739,7 +739,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     }
 
     #monedero-container{
-        width: 70px;
+        width: 75px;
+        left: 5px;
     }
     
     #market-container {
@@ -770,7 +771,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
 @media screen and (max-width: 720px){
 
     #monedero-container{
-        width: 80px;
+        width: 75px;
+        left: 5px;
     }
 
     .stat-row {
@@ -802,13 +804,79 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
    
 }
 
+
+/*=======================================
+  DISEÑO RESPONSIVE: 480px (iPhone y similares)
+=========================================*/
+@media screen and (max-width: 480px){
+    header { 
+        height: calc(10vh - 3px); 
+    }
+
+    footer { 
+        height: calc(20vh - 3px); 
+        padding-bottom: env(safe-area-inset-bottom); 
+    }
+
+    #inventory-container {
+        display: flex;
+        grid-template-columns: none; 
+        flex-wrap: nowrap;
+        gap: 4px;
+        justify-content: flex-start;
+        width: 100%;
+        padding-left: 65px;
+    }
+
+    .inventory-slot {
+        width: 14vw; 
+        height: 14vw;
+        max-width: 55px;
+        max-height: 55px;
+    }
+
+    #market-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .card-producto {
+        width: 100%;
+        padding: 8px;
+    }
+
+    #monedero-container{
+        width: 60px;
+        bottom: 5px;
+        left: 5px;
+        margin-bottom: env(safe-area-inset-bottom);
+        margin-left: env(safe-area-inset-left);
+    }
+
+    #dinero-actual {
+        font-size: 0.9rem; 
+    }
+
+
+
+
+}
+
+
+
+
 /*=======================================
   DISEÑO RESPONSIVE: 360px (Móviles pequeños)
 =========================================*/
 @media screen and (max-width: 360px) {
     h1{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
+
+    .scene { 
+        padding: 10px; 
+    }
+
 
     .scene1-container img {
         width: 80px; 
@@ -820,8 +888,8 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     }
     .inventory-slot {
     
-       width: 50px;
-       height: 50px;
+       width: 42px;
+       height: 42px;
        
     }
 
