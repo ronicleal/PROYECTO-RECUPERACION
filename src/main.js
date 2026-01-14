@@ -49,16 +49,16 @@ function escena1() {
         let vidaExtra = parseInt(vidaInput.value) || 0;
 
 
-        // --- RESTRICCIÓN PARA NO EXCEDER LOS 10 PUNTOS ---
+        
         let totalActual = ataque + defensa + vidaExtra;
 
         if (totalActual > PUNTOS_DISPONIBLES) {
-            // Calculamos cuánto nos hemos pasado
+            
             const exceso = totalActual - PUNTOS_DISPONIBLES;
             if (e && e.target) {
-                // Restamos ese exceso al input que el usuario acaba de cambiar
+                
                 e.target.value = parseInt(e.target.value) - exceso;
-                // Actualizamos las variables locales con el nuevo valor corregido
+                
                 ataque = parseInt(ataqueInput.value) || 0;
                 defensa = parseInt(defensaInput.value) || 0;
                 vidaExtra = parseInt(vidaInput.value) || 0;
@@ -113,7 +113,7 @@ function escena1() {
     btnCrear.addEventListener("click", function () {
         const nombre = nombreInput.value.trim();
 
-        //Obtener valores finales (Aseguridando que se ejecute la validacion)
+        
         const ataque = parseInt(document.getElementById("ataque-input").value) || 0;
         const defensa = parseInt(document.getElementById("defensa-input").value) || 0;
         const vidaExtra = parseInt(document.getElementById("vida-input").value) || 0;
@@ -142,7 +142,7 @@ function escena1() {
  * y permite avanzar hacia la escena del mercado.
  */
 function escena2() {
-    // Ocultamos el formulario y mostramos la tarjeta de estado
+    
     document.querySelector(".container-formulario").style.display = "none";
     document.getElementById("crear-jugador").style.display = "none";
     document.getElementById("titulo-crear-jugador").style.display = "none";
@@ -201,19 +201,13 @@ function escena3() {
 
 
     //=== Lógica del descuento ===
-
-    // 1. Obtener todas las rarezas únicas
     const todasLasRarezas = obtenerTodasLasRarezas();
-    // 2. Elegir una rareza aleatoria a la que aplicar el descuento
     const rarezaDescontada = todasLasRarezas[Math.floor(Math.random() * todasLasRarezas.length)];
-    // 3. Generar un descuento aleatorio de 0 al 30%
-    const descuentoAleatorio = Math.floor(Math.random() * 31);
-    // 4. Aplicar el descuento solo a los productos de esa rareza
+    const descuentoAleatorio = Math.floor(Math.random() * 31);   
     const mercadoDescontado = aplicarDescuentoPorRareza(rarezaDescontada, descuentoAleatorio);
 
 
     //=== Mostrar productos en tarjetas ===
-
     mercadoDescontado.forEach(producto => {
         const card = document.createElement("div");
         card.classList.add("card-producto");
@@ -285,15 +279,12 @@ function escena3() {
      * Actualiza visualmente los slots del inventario en el footer.
      */
     function mostrarSeleccionados() {
-        //1. Obtengo todos los slot del inventario
+
         const slots = document.querySelectorAll(".inventory-slot");
 
-        //2. Limpio todos los slots antes de volver a pintar
         slots.forEach(slot => slot.innerHTML = "");
 
-        //3. Recorro toda la lista de productos seleccionados
         seleccionados.forEach((producto, indice) => {
-            //Si hay un slot disponible para este indice
             if (slots[indice]) {
                 const img = document.createElement("img");
                 //Llamo a la funcion obtener imagen
@@ -503,13 +494,11 @@ function escena6() {
         contenedor.innerHTML = "";
         const enemigo = listaEnemigos[indiceActual];
 
-        // Ejecucion de la logica del combate
-        // Utilizamos la funcion batalla del ranking
         const resultado = batalla(jugador, enemigo);
         const gano = resultado.ganador === jugador.nombre;
 
         if (gano) {
-            animacionMonedas(); //Se disparan las monedas si gana
+            animacionMonedas(); 
             refrescarVisualMonedero(jugador);
         }
 
@@ -541,14 +530,11 @@ function escena6() {
         `
         contenedor.appendChild(area);
 
-        //Animacion de movimiento de las tarjetas
         const cards = area.querySelectorAll('.battle-card');
         setTimeout(() => {
             cards.forEach(card => card.classList.add("animate-in"));
         }, 20);
 
-
-        //Panel de puntos conseguidos
         const infoPuntos = document.createElement("div");
         infoPuntos.className = "mensaje-batalla";
         infoPuntos.innerHTML = `
@@ -559,7 +545,6 @@ function escena6() {
         `
         contenedor.appendChild(infoPuntos);
 
-        //Boton para continuar
         const btnContinuar = document.createElement("button");
         btnContinuar.className = "continuar-mercado";
 
@@ -604,18 +589,15 @@ function escena7() {
     const contenedor = document.getElementById("final");
     contenedor.innerHTML = "";
 
-    //Sumar monedas restantes a los puntos totales
     const monedasExtras = jugador.dinero;
     jugador.puntos += monedasExtras;
 
-    //Guardar en LocalStorage
     const nuevoRegistro = {
         nombre: jugador.nombre,
         puntos: jugador.puntos,
         dinero: monedasExtras
     };
 
-    //Obtenemos los datos previos del LocalStorage o un array vacio si no hay nada
     let historial = JSON.parse(localStorage.getItem("registroJuego")) || [];
     historial.push(nuevoRegistro);
     localStorage.setItem("registroJuego", JSON.stringify(historial));
@@ -626,18 +608,16 @@ function escena7() {
 
     contenedor.appendChild(titulo);
 
-    //Agrupamos por nivel
     const grupos = agruparPorNivel([jugador], 300);
 
-    //Contenedor para el texto
+    
     const infoFinal = document.createElement("div");
     infoFinal.classList.add("info-final-container");
 
-    //Creamos el párrafo el ranking
+    
     const ranking = document.createElement("p");
     ranking.classList.add("final-text");
 
-    //Utilizamos la agrupación para definir el nivel
     if (grupos.Veterano?.length) {
         ranking.innerHTML = `
         El jugador <strong>${jugador.nombre}</strong> ha logrado ser un: <br>
@@ -699,14 +679,12 @@ function escena8() {
         { nombre: "Sergio", puntos: 10, dinero: 10 }
     ];
 
-    //Recuperar datos del LocalStorage
     let historial = JSON.parse(localStorage.getItem("registroJuego")) || [];
 
     if(historial.length < 10){
         historial = [...historial, ...jugadoresPorDefecto];
     }
 
-    //Ordenar en la tabla mayor a menor
     historial.sort((a, b) => b.puntos - a.puntos);
 
 
