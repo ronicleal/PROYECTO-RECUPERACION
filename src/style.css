@@ -726,6 +726,75 @@ input#nombre-jugador,#ataque-input,#defensa-input,#vida-input{
     background-color: var(--colorAcento)
 }
 
+/* =====Animacion del cuadrado FOOTER===== */
+.cuadrado-animacion{
+    position: fixed;
+    right: 2vh;
+    bottom: -1vh;
+    cursor: pointer;
+    transform: translateY(50%);
+    border-color: #000 ;
+    border: 2px solid #000;
+    width: 100px;
+    height: 100px;
+    background-color: #d5d3d3;
+    z-index: 1000;
+    transition: transform 0.2s ease-in-out forwards;
+
+}
+
+.cuadrado-animacion:hover{
+    transform:scaleY(1)
+}
+
+.cuadrado-tituloH1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #000;
+    font-size: var(--font-size-p2);
+}
+
+.cuadrado-tituloP{
+    font-size: small;
+    text-align: center;
+}
+
+.container-estrellas{
+    display: flex;
+    position: fixed;
+    right: 2vh;
+    z-index: 1000;
+}
+.estrellas{
+    display: flex;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    width: 100px;
+    height: 100px;
+    z-index: 10000;
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    left:5vh;
+    animation: Rotar 2s linear infinite forwards;
+    
+
+}
+
+@keyframes Rotar{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    50%{
+        transform: rotate(180deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+
 
 
 
