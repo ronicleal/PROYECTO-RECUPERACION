@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <script type="module" src='./script.js' defer></script>
+</head>
+
+<body>
+    <header>
+        <h1 id="title">Formulario Defensa</h1>
+    </header>
+
+    <div class="container-formulario">
+        <div class="formulario-crear-jugador">
+            <label for="nombre-producto">Nombre</label>
+            <input id="nombre-producto" placeholder="Introduce el nombre" type="text">
+            <p class="error" id="errorUsuario"></p>
+        </div>
+
+        <div class="input-group">
+            <label for="precio-input">Precio</label>
+            <input type="number" id="precio-input" min="0" max="10" value="">
+        </div>
+
+
+        <div class="input-group">
+            <label for="rareza-select">Rareza:</label>
+            <select id="rareza" name="rareza-select">
+                <option value="comun">Común</option>
+                <option value="raro">Raro</option>
+                <option value="epico">Épico</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="tipo-select">Tipo: </label>
+            <select id="tipo" name="tipo-select">
+                <option value="armadura">Armadura</option>
+                <option value="arma">Arma</option>
+                <option value="consumible">Consumible</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="bonus-input">Bonus</label>
+            <input id="bonus" placeholder="Introduce el Bonus" type="text" maxlength="20">
+        </div>
+
+        <div>
+            <label for="imagen">Imagen:</label>
+            <input type="file" id="imagen" name="imagen">
+        </div>
+
+        <input id="enviar" type="submit" value="Enviar">
+
+
+
+
+    </div>
+
+</body>
+
+</html>
